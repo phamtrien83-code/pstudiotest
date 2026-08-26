@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 // Vector Mezmo Telemetry Pipeline Artwork matching Figma Node 33:49 (Clean Rectangular Flush Edges 4:5 Aspect Ratio, No Shadow, No Border)
 function MezmoArtwork() {
   return (
-    <div className="relative w-full max-h-[46vh] lg:max-h-[52vh] aspect-[4/5] bg-[#050E07] rounded-none overflow-hidden flex items-center justify-center">
+    <div className="relative w-full aspect-[4/5] bg-[#050E07] rounded-none overflow-hidden flex items-center justify-center">
       {/* Top & Bottom Neon Yellow Accents */}
       <div className="absolute top-0 left-0 right-0 h-8 sm:h-12 flex items-start justify-center">
         <div className="w-[85%] h-full bg-[#E5FC6B] [clip-path:polygon(0_0,100%_0,85%_100%,15%_100%)] opacity-95" />
