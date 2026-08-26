@@ -1,0 +1,1281 @@
+export interface Author {
+  name: string
+  role: string
+  avatar: string
+}
+
+export interface TableOfContentItem {
+  id: string
+  title: string
+}
+
+export interface ContentSection {
+  id: string
+  heading: string
+  paragraphs: string[]
+  quote?: string
+  keyTakeaways?: string[]
+}
+
+export interface BlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  category: 'B2B SaaS' | 'Explainer Strategy' | 'Motion Design' | 'Studio Insights'
+  date: string
+  isoDate: string
+  readTime: string
+  featured?: boolean
+  coverImage: string
+  coverImageAlt: string
+  author: Author
+  seo: {
+    metaTitle: string
+    metaDescription: string
+    keywords: string[]
+  }
+  tableOfContents: TableOfContentItem[]
+  contentSections: ContentSection[]
+}
+
+export const BLOG_CATEGORIES = [
+  'All',
+  'B2B SaaS',
+  'Explainer Strategy',
+  'Motion Design',
+  'Studio Insights',
+] as const
+
+export type BlogCategory = (typeof BLOG_CATEGORIES)[number]
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    "slug": "how-we-use-ai-in-our-studio-and-where-we-dont-the-real-workflow-behind-a-2000-explainer-video",
+    "title": "How We Use AI in Our Studio (And Where We Don't): The Real Workflow Behind a $2,000 Explainer Video",
+    "excerpt": "We integrated AI into our video production workflow. It saved 9% of production time. Here's what actually works, what doesn't, and the real numbers behind a $2,000 explainer video.",
+    "category": "Explainer Strategy",
+    "date": "Jun 14, 2026",
+    "isoDate": "2026-06-14T18:26:45+0700",
+    "readTime": "8 min read",
+    "featured": true,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/6a1e3f62b3bae40d29999f5a/1781436435325/Frame+23.png?format=1500w",
+    "coverImageAlt": "How We Use AI in Our Studio (And Where We Don't): The Real Workflow Behind a $2,000 Explainer Video",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "How We Use AI in Our Studio (And Where We Don't): The Real Workflow Behind a $2,000 Explainer Video | PStudio Blog",
+      "metaDescription": "We integrated AI into our video production workflow. It saved 9% of production time. Here's what actually works, what doesn't, and the real numbers behind a $2,000 explainer video.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "where-ai-saves-us-real-time",
+        "title": "2. Where AI saves us real time"
+      },
+      {
+        "id": "where-ai-doesn-t-work-and-we-ve-tried",
+        "title": "3. Where AI doesn't work (and we've tried)"
+      },
+      {
+        "id": "the-real-numbers",
+        "title": "4. The real numbers"
+      },
+      {
+        "id": "what-to-look-for-when-a-studio-says-we-use-ai",
+        "title": "5. What to look for when a studio says \"we use AI\""
+      },
+      {
+        "id": "the-checklist-for-clients",
+        "title": "6. The checklist for clients"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Every month, someone asks us: \"Are you using AI to make videos? Can it make things faster and cheaper?\"",
+          "The honest answer: yes, we use AI. No, it doesn't replace what we do. And the line between where AI helps and where it hurts is not where most people think it is.",
+          "We've integrated AI tools into our production pipeline since early 2025. Some experiments saved us hours. Others produced work we'd be embarrassed to show a client. Here's what actually works in our studio — the real workflow, with specific tools and honest assessments of what AI can and can't do for a professional video production team."
+        ]
+      },
+      {
+        "id": "where-ai-saves-us-real-time",
+        "heading": "Where AI saves us real time",
+        "paragraphs": [
+          "Research and brief analysis (saves 2-3 hours per project). When a client sends us a brief, product documentation, and competitor references, AI helps us synthesize it in minutes. We feed the materials into Claude and ask: \"What's the core value proposition? What are the top 3 objections a buyer would have? What's the simplest way to explain this to a non-technical person?\"",
+          "The output isn't the final script. It's a starting point — a first draft of the narrative framework that would have taken us 2-3 hours of reading, highlighting, and note-taking to produce manually. Our scriptwriter then rewrites it based on experience, brand voice, and the specific goals of the project.",
+          "Script ideation and iteration (saves 1-2 hours per project). After the narrative framework is set, we use AI to generate 3-5 opening hook variations. We test them internally, pick the strongest one, and refine it by hand.",
+          "AI is also useful for \"what else could we say here?\" moments — when the scriptwriter is stuck on a transition or needs a different way to frame a benefit. It's a brainstorming partner, not a ghostwriter.",
+          "Storyboard concept exploration (saves 1-2 hours per project). Before our designers create full-color storyboard frames, we sometimes use AI image generation to explore visual directions. \"Show an isometric view of a logistics warehouse with automated conveyor belts\" gives us a concept reference in seconds.",
+          "Important: we never use AI-generated images in the final video. They're concept references only. Our designers create every frame from scratch, using the AI concepts as directional input — the same way an architect might use a quick sketch to explore an idea before drafting proper blueprints."
+        ]
+      },
+      {
+        "id": "where-ai-doesn-t-work-and-we-ve-tried",
+        "heading": "Where AI doesn't work (and we've tried)",
+        "paragraphs": [
+          "Full script writing. AI can draft a script. It cannot write a good script. Every AI-generated script we've tested has the same problems: generic pain points that don't feel specific enough, transitions that feel mechanical, and CTAs that sound like they were written by a committee. A script that's 80% there is not a usable script — it's a rewrite job that takes almost as long as writing from scratch.",
+          "Our scriptwriters use AI as input, not output. The final script is always human-written, informed by 200+ previous projects and the specific context of this client's product, audience, and goals.",
+          "Animation. AI-generated animation in 2026 is impressive as a technology demo and unusable as a client deliverable. The motion feels floaty. The timing lacks intention. Characters move without purpose. Every AI animation we've evaluated looks \"almost right\" — which, in professional production, means wrong.",
+          "Motion design is about intention. Every keyframe, every ease curve, every hold frame communicates something. AI doesn't understand what it's communicating. It generates movement. Our animators create motion with meaning.",
+          "Brand consistency. AI tools generate outputs that look generically good. But \"generically good\" is the opposite of brand consistency. A fintech client's video needs to feel different from a medtech client's video, which needs to feel different from a logistics client's video. That differentiation comes from human creative direction — color systems, typography choices, illustration styles, motion language — that AI cannot replicate because it hasn't spent 3 months learning this client's brand."
+        ]
+      },
+      {
+        "id": "the-real-numbers",
+        "heading": "The real numbers",
+        "paragraphs": [
+          "Here's what AI integration actually changed in our production metrics:",
+          "Research and brief analysis: from 4 hours to 1.5 hours (62% faster). Script first draft: from 6 hours to 4 hours (33% faster). Storyboard concept phase: from 3 hours to 1.5 hours (50% faster). Total time saved per project: approximately 6-7 hours.",
+          "Total production time per project before AI: approximately 80 hours. Total production time per project with AI: approximately 73-74 hours. Percentage of production time that AI touches: roughly 9%.",
+          "The other 91% — storyboarding, illustration, animation, sound design, revisions, client communication — is entirely human. AI shaved less than 10% off our total production time. It did not change our pricing, our team size, or our delivery timeline.",
+          "What it did change: the quality of our first drafts. Better research leads to sharper scripts. Sharper scripts lead to fewer revision rounds. Fewer revisions mean faster delivery and happier clients. The value of AI in our workflow isn't cost savings — it's quality improvement in the early stages."
+        ]
+      },
+      {
+        "id": "what-to-look-for-when-a-studio-says-we-use-ai",
+        "heading": "What to look for when a studio says \"we use AI\"",
+        "paragraphs": [
+          "Not all AI integration is equal. Some studios are using AI the way we do — as a research and ideation tool that improves human output. Others are using AI to replace human work and charging the same price for lower quality.",
+          "Questions to ask:",
+          "\"Which parts of production does AI handle?\" If the answer is \"everything,\" that's a template factory, not a studio. If the answer is \"research, scripting assistance, and concept exploration,\" that's a studio using AI responsibly.",
+          "\"Can I see your team's work vs. AI-generated work?\" A good studio will show you the difference and explain why they chose human execution for the deliverable.",
+          "\"Has AI changed your pricing?\" If a studio's prices dropped 50% because of AI, they replaced their team with AI. The output quality reflects that. If prices stayed the same but turnaround improved slightly, they integrated AI as a tool — which is what it is."
+        ]
+      },
+      {
+        "id": "the-checklist-for-clients",
+        "heading": "The checklist for clients",
+        "paragraphs": [
+          "If you're working with any studio (including us), here's how to help AI + human teams produce better work faster:",
+          "Send complete product documentation. AI research is only as good as the input. The more context you provide upfront — product specs, competitor links, customer testimonials, previous content — the better the first draft will be.",
+          "Share your target audience in detail. Not \"enterprise decision-makers.\" Try: \"VP of Operations at mid-market logistics companies with 50-200 drivers, currently using manual route planning, budget authority up to $50K/year.\" The more specific your audience definition, the more targeted the script.",
+          "Define the one metric the video should move. \"Increase demo bookings by 20%\" gives us a clear optimization target. \"Make a great video\" gives us nothing.",
+          "Provide brand guidelines if you have them. Colors, fonts, tone of voice, existing assets. This saves our designers from guessing and ensures the video feels like part of your brand, not a standalone creative exercise."
+        ]
+      },
+      {
+        "id": "what-to-do-next",
+        "heading": "What to do next",
+        "paragraphs": [
+          "AI is changing how studios work. It's not changing what makes a video effective. Structure, specificity, emotional resonance, visual clarity, strategic intent — these are human skills that AI accelerates but doesn't replace.",
+          "If you're curious how our AI-assisted workflow would handle your specific product and audience, book a strategy call. We'll show you exactly which parts of your project benefit from AI speed and which require human craft — and what the full production timeline looks like."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "thought-leadership-for-tech-founders-how-to-write-content-that-makes-a-ceo-open-your-email",
+    "title": "Thought Leadership for Tech Founders: How to Write Content That Makes a CEO Open Your Email",
+    "excerpt": "Cold emails get ignored. Thought leadership gets remembered. Three content formats that make decision-makers open your email — and the system to produce them consistently.",
+    "category": "Explainer Strategy",
+    "date": "Jun 11, 2026",
+    "isoDate": "2026-06-11T16:22:12+0700",
+    "readTime": "6 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/6a1e3e8d59954f74836d03fc/1781169776301/Frame+22.png?format=1500w",
+    "coverImageAlt": "Thought Leadership for Tech Founders: How to Write Content That Makes a CEO Open Your Email",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "Thought Leadership for Tech Founders: How to Write Content That Makes a CEO Open Your Email | PStudio Blog",
+      "metaDescription": "Cold emails get ignored. Thought leadership gets remembered. Three content formats that make decision-makers open your email — and the system to produce them consistently.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "the-3-formats-that-decision-makers-actually-read",
+        "title": "2. The 3 formats that decision-makers actually read"
+      },
+      {
+        "id": "why-most-b2b-content-fails",
+        "title": "3. Why most B2B content fails"
+      },
+      {
+        "id": "the-content-to-video-upgrade-path",
+        "title": "4. The content-to-video upgrade path"
+      },
+      {
+        "id": "consistency-beats-virality",
+        "title": "5. Consistency beats virality"
+      },
+      {
+        "id": "what-to-do-next",
+        "title": "6. What to do next"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Cold emails get ignored. LinkedIn messages get archived. But when a CEO reads an article that changes how they think about a problem — they remember who wrote it. And when that writer's name appears in their inbox 3 weeks later, they open it.",
+          "That's thought leadership. Not content marketing dressed up in a suit. Not a blog post that says \"5 tips for better ROI.\" Real thought leadership is an insight the reader hadn't considered, delivered with enough specificity that they can act on it.",
+          "For AI, medtech, fintech, and logistics founders, thought leadership is the most undervalued distribution channel. Your competitors are spending $10K/month on Google Ads. You could be spending $0 on a LinkedIn post that reaches 50 of your ideal buyers organically — if the content earns their attention.",
+          "Here's how to create it, based on what we've seen work for our clients and what we practice ourselves."
+        ]
+      },
+      {
+        "id": "the-3-formats-that-decision-makers-actually-read",
+        "heading": "The 3 formats that decision-makers actually read",
+        "paragraphs": [
+          "Not all thought leadership is created equal. After studying what our clients' target audiences engage with, we've identified three formats that consistently earn attention from founders, CMOs, and VPs.",
+          "\"Future of X\" articles. These are informed predictions about where an industry is heading — grounded in data, not hype. \"The future of AI in logistics isn't route optimization — it's autonomous exception handling.\" The reader thinks: \"I hadn't considered that.\" They remember you as the person who helped them see around the corner.",
+          "The key: specificity. \"AI will transform healthcare\" is noise. \"AI-assisted pathology will shift from screening tool to primary diagnostic partner within 3 years, and the bottleneck isn't accuracy — it's clinician workflow integration\" is insight.",
+          "\"We tried X and this is what broke\" articles. Vulnerability builds trust faster than expertise. When a founder writes \"We spent $50K on a product video that nobody watched — here's what we learned,\" the reader thinks: \"Finally, someone being honest.\" They trust the next thing you say.",
+          "The structure: what you tried → what you expected → what actually happened → why → what you'd do differently. The \"why\" is where the insight lives. The failure is just the door that gets people into the room.",
+          "\"Anatomy of a decision\" articles. Decision-makers are fascinated by how other decision-makers make choices. \"Why we chose to rebuild our pricing model from scratch (and what it cost us)\" gives the reader a framework they can apply to their own decisions.",
+          "The structure: the context → the options you considered → the tradeoffs → what you chose and why → what happened. This format works especially well for product, hiring, fundraising, and go-to-market decisions."
+        ]
+      },
+      {
+        "id": "why-most-b2b-content-fails",
+        "heading": "Why most B2B content fails",
+        "paragraphs": [
+          "Most B2B content fails because it's written to demonstrate expertise rather than to provide value. There's a difference.",
+          "Demonstrating expertise: \"Our platform uses advanced machine learning models trained on 50 million data points.\" The reader thinks: \"Good for you.\"",
+          "Providing value: \"Here's the framework we use to decide whether a prediction model is ready for production — and the 3 signals that tell you it's not.\" The reader thinks: \"I can use this.\"",
+          "The test: would the reader benefit from this article even if they never buy your product? If yes, it's thought leadership. If no, it's marketing content pretending to be thought leadership.",
+          "Another failure mode: writing for search engines instead of people. A blog post titled \"Best AI Logistics Solutions 2026\" filled with keyword-stuffed paragraphs might rank on Google, but no CEO is going to read it and think \"I should work with this company.\" Write for the human first. Optimize for search second."
+        ]
+      },
+      {
+        "id": "the-content-to-video-upgrade-path",
+        "heading": "The content-to-video upgrade path",
+        "paragraphs": [
+          "Not everything should be a blog post. Some insights are better told visually.",
+          "A \"Future of X\" article works great as text. But a \"We tried X and this broke\" story can be powerful as a 90-second animated case study — showing the before/after with real metrics, anonymized UI, and motion graphics that make the data tangible.",
+          "An \"Anatomy of a decision\" piece can become a webinar that's then cut into 5 LinkedIn video clips, each covering one tradeoff or learning.",
+          "The rule: start with text (fastest to produce, easiest to iterate). If the piece resonates — if it gets shares, comments, DMs from prospects — upgrade it to video. The text version becomes the script.",
+          "We've helped multiple founders take their highest-performing LinkedIn post and turn it into an explainer video that runs on their homepage. The post proved the message worked. The video scaled it."
+        ]
+      },
+      {
+        "id": "consistency-beats-virality",
+        "heading": "Consistency beats virality",
+        "paragraphs": [
+          "One post that gets 50K views and then silence for 3 months does less for your pipeline than a post every week that gets 500 views from the right people.",
+          "Thought leadership compounds. Reader sees your first post and thinks \"interesting.\" They see your second and think \"this person knows their stuff.\" By the fifth, they think \"I should talk to them.\"",
+          "The system: 1 substantial article per month (1500+ words, published on your blog and adapted for LinkedIn). 1 shorter LinkedIn post per week (300-500 words, one insight, one takeaway). Share freely. Link to your site in comments, not in the post.",
+          "This cadence is sustainable for a busy founder. 2-3 hours per week. No content team required. The hardest part is starting. The second hardest part is continuing past month 2 when you haven't seen results yet. Results come at month 4-6."
+        ]
+      },
+      {
+        "id": "what-to-do-next",
+        "heading": "What to do next",
+        "paragraphs": [
+          "Pick one of the three formats. Write one article about something you genuinely know — a decision you made, a trend you see forming, a mistake you survived. Publish it on LinkedIn. See what happens.",
+          "If you want that article to become a video — a visual version of your thinking that lives on your homepage and works while you sleep — that's what we do. Start with a strategy call and bring the article. We'll map it to a 60-second visual story."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "from-slide-deck-to-content-ecosystem-how-one-pitch-deck-becomes-7-marketing-assets",
+    "title": "From Slide Deck to Content Ecosystem: How One Pitch Deck Becomes 7 Marketing Assets",
+    "excerpt": "How to turn one pitch deck into 7 marketing assets — explainer video, social clips, landing page, blog, and more. A practical content repurposing system for SaaS and tech.",
+    "category": "Explainer Strategy",
+    "date": "Jun 8, 2026",
+    "isoDate": "2026-06-08T18:17:26+0700",
+    "readTime": "6 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/6a1e3cf735fac5353370d59c/1780917472618/Frame+21.png?format=1500w",
+    "coverImageAlt": "From Slide Deck to Content Ecosystem: How One Pitch Deck Becomes 7 Marketing Assets",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "From Slide Deck to Content Ecosystem: How One Pitch Deck Becomes 7 Marketing Assets | PStudio Blog",
+      "metaDescription": "How to turn one pitch deck into 7 marketing assets — explainer video, social clips, landing page, blog, and more. A practical content repurposing system for SaaS and tech.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "day-1-extract-the-narrative-core",
+        "title": "2. Day 1: Extract the narrative core"
+      },
+      {
+        "id": "day-2-3-build-the-hero-video",
+        "title": "3. Day 2–3: Build the hero video"
+      },
+      {
+        "id": "day-4-5-cut-for-social",
+        "title": "4. Day 4–5: Cut for social"
+      },
+      {
+        "id": "day-6-7-landing-page-blog",
+        "title": "5. Day 6–7: Landing page + blog"
+      },
+      {
+        "id": "the-7-assets-from-1-deck",
+        "title": "6. The 7 assets from 1 deck"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "A common scene in SaaS, medtech, and fintech companies: the founder builds a pitch deck. The marketing team writes a blog post. The product team creates a demo script. The social manager posts something unrelated. And the sales team uses a deck from 3 months ago because nobody told them about the new one.",
+          "Every team is producing content. None of it connects.",
+          "The fix isn't more content. It's a system that turns one strong narrative into multiple assets — each designed for a specific channel, audience, and stage of the funnel. Content repurposing isn't new. But doing it deliberately, starting from a single source of truth, is what separates teams that produce content from teams that build pipeline.",
+          "Here's the system we use at PSTUDIO when a client comes to us with a pitch deck and leaves with an entire content ecosystem."
+        ]
+      },
+      {
+        "id": "day-1-extract-the-narrative-core",
+        "heading": "Day 1: Extract the narrative core",
+        "paragraphs": [
+          "Every pitch deck has a story buried inside it — usually somewhere between slide 3 and slide 7. The problem slide, the solution slide, the \"how it works\" slide. That's your narrative core.",
+          "We don't start production by opening After Effects. We start by reading the deck and finding the one sentence that makes a skeptic lean forward. Sometimes it's on the slides. Sometimes the founder says it in conversation and it never made it into the deck.",
+          "That sentence becomes the foundation for everything else: the video script, the blog post, the social hooks, the landing page headline. If that sentence doesn't exist yet, we write it together in the strategy call.",
+          "One AI SaaS founder told us: \"We help companies make sense of their data.\" That's generic. After 20 minutes of conversation, we found: \"Your data team spends 60% of their time finding data and 40% analyzing it. We flip that ratio.\" That's a narrative core."
+        ]
+      },
+      {
+        "id": "day-2-3-build-the-hero-video",
+        "heading": "Day 2–3: Build the hero video",
+        "paragraphs": [
+          "The narrative core becomes a 60-90 second explainer video. This is your highest-leverage asset because it works everywhere: homepage, sales outreach, investor updates, conference booths, paid ads.",
+          "The video follows the same structure every time: problem (10s) → cost of problem (10s) → the shift (5s) → solution workflow (20s) → proof (10s) → CTA (5s). We covered this in detail in our article on the anatomy of a 60-second explainer.",
+          "The hero video is designed to be cut. Every section is self-contained, which means we can extract segments for social without re-editing from scratch."
+        ]
+      },
+      {
+        "id": "day-4-5-cut-for-social",
+        "heading": "Day 4–5: Cut for social",
+        "paragraphs": [
+          "From one 60-90 second hero video, we derive 3-5 social assets:",
+          "A 15-second hook clip — the problem statement only. Works as a LinkedIn video post or YouTube pre-roll ad. The goal isn't to explain the product. It's to stop the scroll and drive a click to the full video.",
+          "A 30-second product snippet — the solution workflow section. Works on LinkedIn, Twitter, Instagram. Shows enough to create interest. Not enough to satisfy it.",
+          "A 6-second bumper — one metric or proof point with logo. Works as YouTube bumper ad or Instagram Story.",
+          "Same production, multiple formats. Each cut is optimized for its platform: square for LinkedIn feed, vertical for Stories/Reels/TikTok, landscape for YouTube and website."
+        ]
+      },
+      {
+        "id": "day-6-7-landing-page-blog",
+        "heading": "Day 6–7: Landing page + blog",
+        "paragraphs": [
+          "The video script — the one we already wrote and produced — becomes the foundation for a landing page and a blog post.",
+          "The landing page uses the video above the fold, with the key points from the script as supporting copy below. Headlines come straight from the script's problem and solution sections. Testimonials and proof points anchor the bottom. A single CTA throughout.",
+          "The blog post expands the narrative. Where the video spent 10 seconds on the problem, the blog spends 300 words. Where the video showed one workflow, the blog explains the technical depth behind it. The blog exists for people who want to go deeper after watching the video — and for search engines that can't watch videos."
+        ]
+      },
+      {
+        "id": "the-7-assets-from-1-deck",
+        "heading": "The 7 assets from 1 deck",
+        "paragraphs": [
+          "From a single pitch deck, the system produces:",
+          "A 60-90 second hero explainer video",
+          "A 15-second social hook clip",
+          "A 30-second product snippet",
+          "A 6-second bumper ad",
+          "A landing page with embedded video",
+          "A blog post expanding the narrative",
+          "A refreshed pitch deck with the new narrative structure",
+          "Total production time: 3-5 weeks. Total cost: less than hiring a content marketing manager for one month. Shelf life: 12-18 months before the core message needs updating."
+        ]
+      },
+      {
+        "id": "the-checklist-is-your-deck-ready",
+        "heading": "The checklist: is your deck ready?",
+        "paragraphs": [
+          "Before starting this process, assess whether your current deck has enough substance to build on. Ask yourself:",
+          "Does slide 3-7 contain a clear problem → solution → proof flow? If your problem slide says \"the market is large,\" that's not a problem slide — it's a market size slide. You need a pain point slide.",
+          "Can you state your core value proposition in one sentence without jargon? If not, the strategy call is where we find it.",
+          "Do you have at least one proof point — a customer result, a metric, a testimonial? Without proof, the video has no credibility anchor. Even early-stage numbers (\"our beta users reduced X by Y%\") work.",
+          "Do you have screenshots or UI flows of your product? If your product is live, we need reference material to create accurate animations. If it's pre-launch, we can work from wireframes or prototypes.",
+          "If you answered yes to at least 3 of these, your deck is ready. Book a strategy call and we'll map the full content ecosystem before production starts."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "how-to-explain-your-ai-product-to-someone-who-doesnt-care-about-ai",
+    "title": "How to Explain Your AI Product to Someone Who Doesn't Care About AI",
+    "excerpt": "Your AI product is brilliant. Your pitch is losing deals. Here's the storytelling framework that turns technical complexity into buyer-ready messaging in 60 seconds.",
+    "category": "Explainer Strategy",
+    "date": "Jun 5, 2026",
+    "isoDate": "2026-06-05T17:32:00+0700",
+    "readTime": "6 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/6a1e3c292319877274fc8e12/1780655534057/Frame+20.png?format=1500w",
+    "coverImageAlt": "How to Explain Your AI Product to Someone Who Doesn't Care About AI",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "How to Explain Your AI Product to Someone Who Doesn't Care About AI | PStudio Blog",
+      "metaDescription": "Your AI product is brilliant. Your pitch is losing deals. Here's the storytelling framework that turns technical complexity into buyer-ready messaging in 60 seconds.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "the-fundamental-mistake-leading-with-how-it-works",
+        "title": "2. The fundamental mistake: leading with how it works"
+      },
+      {
+        "id": "the-60-second-storytelling-framework",
+        "title": "3. The 60-second storytelling framework"
+      },
+      {
+        "id": "the-buzzword-trap",
+        "title": "4. The buzzword trap"
+      },
+      {
+        "id": "industry-specific-storytelling-pitfalls",
+        "title": "5. Industry-specific storytelling pitfalls"
+      },
+      {
+        "id": "when-to-upgrade-from-a-pitch-to-a-video",
+        "title": "6. When to upgrade from a pitch to a video"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Your engineering team just shipped something brilliant. A gen AI co-pilot that reduces underwriting time by 70%. An agentic workflow that automates supply chain decisions. A predictive model that catches equipment failures 6 hours before they happen.",
+          "Then your sales team gets on a call with the VP of Operations. They open with: \"Our platform leverages proprietary large language models with retrieval-augmented generation to deliver agentic automation across your value chain.\"",
+          "The VP's eyes glaze over. They ask for a follow-up email. The email goes unread. The deal dies.",
+          "This happens every day in AI, fintech, medtech, and logistics companies. The product works. The explanation doesn't.",
+          "Here's the storytelling playbook we use at PSTUDIO when a client's product is too complex for a 60-second video — which, by the way, means it's too complex for a sales call too."
+        ]
+      },
+      {
+        "id": "the-fundamental-mistake-leading-with-how-it-works",
+        "heading": "The fundamental mistake: leading with how it works",
+        "paragraphs": [
+          "Technical founders love explaining architecture. It's what they built. It's what they're proud of. And it's the last thing a buyer wants to hear in the first conversation.",
+          "Decision-makers don't buy technology. They buy outcomes. A CFO doesn't care that your model uses transformer architecture. They care that their monthly close takes 3 days instead of 12. A hospital administrator doesn't care about your FDA-cleared algorithm. They care that radiologists can see 40% more patients without burning out.",
+          "The framework is simple: start with what changes in their world, not what happens inside your product."
+        ]
+      },
+      {
+        "id": "the-60-second-storytelling-framework",
+        "heading": "The 60-second storytelling framework",
+        "paragraphs": [
+          "We use this framework for every explainer video script, but it works just as well for a sales call, a pitch deck, or a LinkedIn post.",
+          "Line 1: Name their specific pain. Not \"managing operations is complex.\" Try: \"Your warehouse team is making 200 routing decisions a day based on yesterday's data.\" The more specific, the more the listener thinks \"that's us.\"",
+          "Line 2: Quantify the cost. \"That costs you $40K/month in suboptimal routes and 6 hours of manual planning every morning.\" Numbers make abstract pain feel real. If you don't have their exact numbers, use industry benchmarks.",
+          "Line 3: Introduce the shift (not the product). \"What if those 200 decisions happened automatically, using today's data, before your first driver starts their route?\" This is the concept. It's the \"what if\" that opens the buyer's imagination.",
+          "Line 4: Show one workflow. \"Every morning at 5am, the system analyzes live traffic, weather, and delivery windows, generates optimized routes, and pushes them to drivers' phones. Your team reviews exceptions. Everything else is handled.\" One workflow. One story. Start to finish.",
+          "Line 5: Prove it. \"A mid-market logistics company reduced fuel costs by 28% and cut planning time from 6 hours to 45 minutes in the first quarter.\" One proof point. Specific. Defensible.",
+          "Line 6: Next step. \"Want to see what this looks like with your routes? Let's do a 20-minute walkthrough with your data.\"",
+          "Six lines. Under 150 words. That's a 60-second explainer video script. It's also a pitch. It's also a cold email. The framework scales to any format because it's built on how buyers make decisions, not how engineers think about products."
+        ]
+      },
+      {
+        "id": "the-buzzword-trap",
+        "heading": "The buzzword trap",
+        "paragraphs": [
+          "\"Gen AI co-pilot.\" \"Agentic platform.\" \"Digital twin.\" \"Composable architecture.\"",
+          "Every one of these terms is meaningful to the person who built the product. None of them are meaningful to the person buying it.",
+          "The test: can you explain what your product does without using any term that didn't exist 5 years ago? If not, you're speaking engineer, not buyer.",
+          "Translation examples:",
+          "\"AI-powered predictive analytics\" → \"The system tells you which equipment will fail next week so you can fix it before it breaks.\"",
+          "\"Agentic workflow automation\" → \"Tasks that used to require 3 people and 4 hours now happen automatically.\"",
+          "\"RAG-enhanced knowledge base\" → \"Your team gets accurate answers from your own documents in seconds instead of searching through 50 files.\"",
+          "Each translation follows the same pattern: replace the technical term with what it does for the user. Not how it works — what it does."
+        ]
+      },
+      {
+        "id": "industry-specific-storytelling-pitfalls",
+        "heading": "Industry-specific storytelling pitfalls",
+        "paragraphs": [
+          "AI SaaS: The #1 mistake is demoing the AI instead of demoing the outcome. Nobody wants to see your model's confidence scores. They want to see the decision it enables and the time it saves.",
+          "Medtech: Clinicians need to trust the algorithm before they'll use it. Your video or pitch must show the AI's reasoning — not just its recommendation. \"The system flagged this scan because it detected irregular density in the lower right quadrant\" is trust-building. \"The AI says this patient needs attention\" is not.",
+          "Fintech: Compliance is always in the room, even when no compliance officer is present. Every claim in your video or pitch needs to be defensible. Don't say \"eliminates risk.\" Say \"reduces false positive rate by 34%, freeing your team to investigate real alerts.\"",
+          "Logistics: Operators are skeptical of systems that promise to replace their judgment. Position your product as a tool that handles the routine so they can focus on exceptions. \"The system plans 95% of routes. Your team manages the 5% that need human judgment.\""
+        ]
+      },
+      {
+        "id": "when-to-upgrade-from-a-pitch-to-a-video",
+        "heading": "When to upgrade from a pitch to a video",
+        "paragraphs": [
+          "A pitch works for one call. A video works for hundreds of calls simultaneously.",
+          "If your sales team is having the same conversation more than 5 times a week, that conversation should be a video. Send it before the call. The prospect arrives already understanding the product. The call becomes a strategy conversation instead of an education session.",
+          "If your product requires a technical explanation that non-technical buyers struggle with, a visual explainer resolves in 60 seconds what a slide deck can't resolve in 15 minutes. Animation makes the invisible (AI processes, data flows, algorithmic decisions) visible.",
+          "We help AI, medtech, fintech, and logistics companies turn their technical story into a 60-second visual narrative. The starting point is always the same: a 20-minute strategy call where we translate your product into buyer language before touching any visuals."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "anatomy-of-a-60-second-explainer-video-what-happens-in-each-second-and-why",
+    "title": "Anatomy of a 60-Second Explainer Video: What Happens in Each Second (And Why)",
+    "excerpt": "A second-by-second breakdown of what makes a 60-second explainer video convert — the hook, the bridge, the proof, and the mistakes we'd fix from our first 200 projects",
+    "category": "Explainer Strategy",
+    "date": "Jun 2, 2026",
+    "isoDate": "2026-06-02T09:10:03+0700",
+    "readTime": "7 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/6a1e3a09b3bae40d2997b787/1780367593292/Frame+19.png?format=1500w",
+    "coverImageAlt": "Anatomy of a 60-Second Explainer Video: What Happens in Each Second (And Why)",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "Anatomy of a 60-Second Explainer Video: What Happens in Each Second (And Why) | PStudio Blog",
+      "metaDescription": "A second-by-second breakdown of what makes a 60-second explainer video convert — the hook, the bridge, the proof, and the mistakes we'd fix from our first 200 projects",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "seconds-0-5-the-hook-that-earns-the-next-55",
+        "title": "2. Seconds 0–5: The hook that earns the next 55"
+      },
+      {
+        "id": "seconds-5-15-the-problem-amplification",
+        "title": "3. Seconds 5–15: The problem amplification"
+      },
+      {
+        "id": "seconds-15-25-the-bridge",
+        "title": "4. Seconds 15–25: The bridge"
+      },
+      {
+        "id": "seconds-25-45-the-solution-in-motion",
+        "title": "5. Seconds 25–45: The solution in motion"
+      },
+      {
+        "id": "seconds-45-55-the-proof",
+        "title": "6. Seconds 45–55: The proof"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Most people watch an explainer video and think \"that was clear.\" They don't think about why it was clear. They don't notice the structural decisions that made it work — the hook that earned the next 10 seconds, the pain point that created recognition, the transition that moved from problem to product without feeling like a sales pitch.",
+          "After producing 200+ explainer videos for AI, SaaS, medtech, and fintech companies, we've learned that a great 60-second video isn't 60 seconds of content. It's 6 micro-decisions, each earning the viewer's attention for the next 10 seconds.",
+          "Here's how those 60 seconds actually break down — and what we'd change if we could go back and redo our earliest projects."
+        ]
+      },
+      {
+        "id": "seconds-0-5-the-hook-that-earns-the-next-55",
+        "heading": "Seconds 0–5: The hook that earns the next 55",
+        "paragraphs": [
+          "You have 5 seconds before someone decides to keep watching or scroll away. Five seconds is roughly 12 words. That's not enough for a product introduction. It's barely enough for a sentence.",
+          "So don't introduce your product. Introduce a feeling.",
+          "We worked with an AI-powered logistics platform. Their original opening: \"Meet RouteAI, the intelligent logistics optimization platform.\" Nobody kept watching. We rewrote it to: \"Your fleet is burning $40K a month on routes a machine could plan in 8 seconds.\" Watch-through rate jumped from 22% to 64%.",
+          "The difference: the first opening asks viewers to care about a product they've never heard of. The second opening describes a problem they're already losing sleep over.",
+          "The rule for seconds 0–5: name a specific cost that the viewer already feels. Dollar amounts, hours wasted, errors per week, customers lost. Not categories of problems — specific, measurable pain."
+        ]
+      },
+      {
+        "id": "seconds-5-15-the-problem-amplification",
+        "heading": "Seconds 5–15: The problem amplification",
+        "paragraphs": [
+          "Once you've named the pain, spend the next 10 seconds making it worse. Not in a manipulative way — in a \"you're not alone and this problem is bigger than you think\" way.",
+          "This is where you show the current state: the spreadsheets, the manual processes, the 4 different tools that don't talk to each other, the 3am alerts that shouldn't happen. For medtech, it might be: \"Patients wait 6 weeks for a diagnosis that AI could flag in 30 minutes — but the clinician doesn't trust the algorithm because nobody explained how it works.\"",
+          "The purpose of this section isn't to make viewers feel bad. It's to create the gap between \"where they are\" and \"where they could be.\" The wider that gap, the more they want the solution.",
+          "Visually, this section uses muted colors, cluttered compositions, frustrated characters, or overwhelming data streams. Everything should feel slightly chaotic — because that's how the problem feels."
+        ]
+      },
+      {
+        "id": "seconds-15-25-the-bridge",
+        "heading": "Seconds 15–25: The bridge",
+        "paragraphs": [
+          "This is the hardest part of any explainer video, and the part most studios get wrong.",
+          "The bridge is the moment you transition from \"the world is broken\" to \"here's a better way.\" Get it wrong and it feels like a bait-and-switch. Get it right and the viewer leans in.",
+          "The bridge is not \"Introducing [Product].\" That's a speed bump, not a bridge. The viewer doesn't care about your product name yet. They care about the principle behind it.",
+          "A good bridge sounds like: \"What if your fleet routing happened before your drivers started their day — not after?\" Or: \"What if the algorithm showed its reasoning, not just its answer?\" Or: \"What if your finance team's monthly close happened in hours instead of weeks?\"",
+          "The bridge introduces the concept before the product. It gives the viewer a reason to want the solution before they know who provides it."
+        ]
+      },
+      {
+        "id": "seconds-25-45-the-solution-in-motion",
+        "heading": "Seconds 25–45: The solution in motion",
+        "paragraphs": [
+          "This is where your product appears — but not as a feature tour. As a workflow.",
+          "Show one user, one task, one outcome. A logistics manager opens a dashboard, sees optimized routes already planned, clicks \"deploy,\" and drivers get their routes on mobile. Done. That's 15 seconds of UI animation that tells a complete story.",
+          "The most common mistake here: trying to show everything. \"We also do analytics, reporting, integrations, and custom alerts!\" Each additional feature dilutes the clarity of the one story you're telling. If your product does 10 things, pick the one that's most relevant to the viewer you defined in seconds 0–5.",
+          "For AI products specifically, this section needs to do one extra job: make the AI visible. Show the machine learning model analyzing patterns, flagging anomalies, suggesting actions — then show a human reviewing and approving. This builds trust. AI that works invisibly makes people nervous. AI that works visibly makes people confident.",
+          "Visual style shifts here: bright colors, clean interfaces, smooth transitions. Everything should feel effortless — because that's how the solution should feel compared to the chaos of the problem section."
+        ]
+      },
+      {
+        "id": "seconds-45-55-the-proof",
+        "heading": "Seconds 45–55: The proof",
+        "paragraphs": [
+          "Nobody believes a product video. Everybody believes a result.",
+          "This section shows evidence: \"Companies using [Product] reduced routing costs by 34%.\" Or: \"Clinicians using the AI-assisted diagnosis tool cut assessment time from 6 weeks to 3 days.\" Or: \"Finance teams closed their books 4x faster in the first month.\"",
+          "One or two metrics. Not twelve. Pick the number that matters most to the person watching — and make sure it's defensible. If you can attribute it to a specific customer (even anonymized), do it. \"A Series B logistics startup\" is more credible than a generic claim.",
+          "If you don't have metrics yet (common for early-stage companies), use social proof instead: logo bar of customers, a quote from a beta user, or the number of companies in your pipeline. Something real."
+        ]
+      },
+      {
+        "id": "seconds-55-60-the-cta",
+        "heading": "Seconds 55–60: The CTA",
+        "paragraphs": [
+          "The last 5 seconds have one job: tell the viewer exactly what to do next.",
+          "Not \"Learn more.\" Not \"Visit our website.\" Not a logo fade. Those are exits, not invitations.",
+          "A strong CTA matches where the video lives. Homepage: \"Start your free trial.\" Sales email: \"Book a 15-minute demo.\" Investor deck: \"Let's talk.\" Ad: \"See it in action.\"",
+          "The CTA should appear as text on screen, be spoken by the voiceover, and ideally be reinforced by a button or link below the video. Three channels for one instruction."
+        ]
+      },
+      {
+        "id": "if-we-could-go-back",
+        "heading": "If we could go back",
+        "paragraphs": [
+          "Our earliest explainer videos made three mistakes we now avoid:",
+          "We started with the product, not the problem. Every video opened with a logo and a tagline. We've since learned that the viewer doesn't earn the right to hear about your product until you've proven you understand their problem.",
+          "We tried to show every feature. A 60-second video that covers 8 features communicates zero features effectively. Now we pick one workflow and go deep.",
+          "We ended with a logo fade instead of a specific CTA. The viewer thought \"nice video\" and moved on. Now every video ends with one clear next step."
+        ]
+      },
+      {
+        "id": "what-to-do-next",
+        "heading": "What to do next",
+        "paragraphs": [
+          "If you have an explainer video that's underperforming — low watch-through, low conversion — the problem is almost never the animation quality. It's the structure. Run your video through this 6-part framework and see where it breaks down.",
+          "If you don't have a video yet but you have a complex AI, medtech, fintech, or logistics product that's hard to explain in a meeting, that's exactly what we do. We start with a free 20-minute strategy call where we'll map your product to this framework before touching any visuals."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "video-ads-for-apps-how-to-create-mobile-ad-creative-that-drives-installs",
+    "title": "Video Ads for Apps: How to Create Mobile Ad Creative That Drives Installs",
+    "excerpt": "Video ads for mobile apps: how to create ad creative that drives installs. The 3 formats that work, animated vs live action, and how to beat ad fatigue",
+    "category": "B2B SaaS",
+    "date": "May 2, 2026",
+    "isoDate": "2026-05-02T07:21:20+0700",
+    "readTime": "4 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/69dc531cc910da5408b6f76b/1780287808593/Frame+16.png?format=1500w",
+    "coverImageAlt": "Video Ads for Apps: How to Create Mobile Ad Creative That Drives Installs",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "Video Ads for Apps: How to Create Mobile Ad Creative That Drives Installs | PStudio Blog",
+      "metaDescription": "Video ads for mobile apps: how to create ad creative that drives installs. The 3 formats that work, animated vs live action, and how to beat ad fatigue",
+      "keywords": [
+        "Explainer Video",
+        "B2B SaaS",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "why-video-ads-outperform-static-for-app-installs",
+        "title": "2. Why video ads outperform static for app installs"
+      },
+      {
+        "id": "the-3-video-ad-formats-that-drive-installs",
+        "title": "3. The 3 video ad formats that drive installs"
+      },
+      {
+        "id": "animated-vs-live-action-for-app-ads",
+        "title": "4. Animated vs. live action for app ads"
+      },
+      {
+        "id": "how-to-get-maximum-creative-volume-from-minimum-production",
+        "title": "5. How to get maximum creative volume from minimum production"
+      },
+      {
+        "id": "creative-refresh-cadence",
+        "title": "6. Creative refresh cadence"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "App install ads live and die by creativity. The targeting is automated. The bidding is automated. The one thing that separates a $0.50 install from a $5.00 install is the video.",
+          "Most app marketers know this. What they don't know is how to produce video ad creatives that actually perform — without burning through their budget on a new batch of creatives every 2 weeks."
+        ]
+      },
+      {
+        "id": "why-video-ads-outperform-static-for-app-installs",
+        "heading": "Why video ads outperform static for app installs",
+        "paragraphs": [
+          "Static image ads tell users about your app. Video ads show them. In a feed full of text and images, a moving visual stops the scroll.",
+          "The data is consistent: video ads drive higher click-through rates, lower cost per install, and better retention at day 7 compared to static. Not because video is magic — but because 15 seconds of motion communicates more than a headline and a screenshot ever can.",
+          "The platforms know this, too. Meta, Google, TikTok, and Apple Search Ads all prioritize video creative in their algorithms. If you're running app install campaigns without video, you're bidding with one hand tied behind your back."
+        ]
+      },
+      {
+        "id": "the-3-video-ad-formats-that-drive-installs",
+        "heading": "The 3 video ad formats that drive installs",
+        "paragraphs": [
+          "The hook-and-demo (15 seconds). Opens with a pain point or outcome (3 seconds), shows the app solving it (8 seconds), closes with CTA and App Store badge (4 seconds). This is your workhorse format — runs on every platform, fits every placement.",
+          "The social proof ad (15-30 seconds). Opens with a metric or testimonial (\"500K users switched to [App] this year\"), shows the key workflow, and closes with CTA. Works best for retargeting users who already saw your first ad.",
+          "The use-case series (15 seconds each). Same app, different audiences. \"For freelancers who...\" \"For parents who...\" \"For students who...\" Each video targets a different user persona with a different hook. Same production assets, different scripts. Maximum efficiency."
+        ]
+      },
+      {
+        "id": "animated-vs-live-action-for-app-ads",
+        "heading": "Animated vs. live action for app ads",
+        "paragraphs": [
+          "Both work. But animated ads have three advantages for app marketing.",
+          "First, production speed. An animated ad can be produced in 1-2 weeks. A live action shoot requires casting, location, filming, and editing — 4-6 weeks minimum.",
+          "Second, iteration. When ad fatigue sets in (and it will, every 2-4 weeks), you need new creative fast. Animated assets can be remixed, recolored, and re-scripted without starting from scratch. Change the hook, swap the screens, update the CTA — ship a \"new\" ad in days.",
+          "Third, consistency. Every frame is brand-perfect. No bad lighting, no awkward acting, no continuity issues. Your app looks polished in every ad, every time."
+        ]
+      },
+      {
+        "id": "how-to-get-maximum-creative-volume-from-minimum-production",
+        "heading": "How to get maximum creative volume from minimum production",
+        "paragraphs": [
+          "The smartest app marketers don't produce 20 separate videos. They produce 1 master video and cut it 20 ways.",
+          "Here's the system: produce one 60-second hero video that covers your app's core value proposition. From that single production, derive 15-second hooks (test 5 different openings), 30-second mid-funnel ads (for retargeting), vertical + square + landscape versions, and platform-specific edits (TikTok native style vs. Meta polished).",
+          "One production session. 15-20 unique ad creatives. That's how you beat ad fatigue without breaking the budget."
+        ]
+      },
+      {
+        "id": "creative-refresh-cadence",
+        "heading": "Creative refresh cadence",
+        "paragraphs": [
+          "Plan for refreshing your top-performing ad creative every 3-4 weeks. This doesn't mean producing entirely new videos — it means swapping hooks, testing new CTAs, and updating screens when your app UI changes.",
+          "A VaaS retainer model works well here. Instead of commissioning a new batch of ads every month, your production partner delivers ongoing creative refreshes as part of a monthly retainer. Same team, same brand knowledge, faster turnaround."
+        ]
+      },
+      {
+        "id": "getting-started",
+        "heading": "Getting started",
+        "paragraphs": [
+          "App ad video packages start from $2,500 — including a hero video + 3-5 platform-optimized cutdowns. Creative refresh retainers start from $3,000/month.",
+          "If you're running app install campaigns and your creative is stale, let's talk. A single production session can fuel 2-3 months of paid campaigns."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "when-should-a-saas-company-invest-in-video-a-stage-by-stage-guide",
+    "title": "When Should a SaaS Company Invest in Video? A Stage-by-Stage Guide",
+    "excerpt": "When should your SaaS company invest in video? A stage-by-stage guide from pre-launch to scale, with realistic budgets at each level",
+    "category": "B2B SaaS",
+    "date": "Apr 24, 2026",
+    "isoDate": "2026-04-24T07:15:41+0700",
+    "readTime": "3 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/69dc51c915c36216d58c5eea/1780287780184/Frame+14.png?format=1500w",
+    "coverImageAlt": "When Should a SaaS Company Invest in Video? A Stage-by-Stage Guide",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "When Should a SaaS Company Invest in Video? A Stage-by-Stage Guide | PStudio Blog",
+      "metaDescription": "When should your SaaS company invest in video? A stage-by-stage guide from pre-launch to scale, with realistic budgets at each level",
+      "keywords": [
+        "Explainer Video",
+        "B2B SaaS",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "pre-product-skip-video-entirely",
+        "title": "2. Pre-product: skip video entirely"
+      },
+      {
+        "id": "post-launch-pre-traction-homepage-explainer",
+        "title": "3. Post-launch, pre-traction: homepage explainer"
+      },
+      {
+        "id": "product-market-fit-product-demo-sales-enablement",
+        "title": "4. Product-market fit: product demo + sales enablement"
+      },
+      {
+        "id": "growth-stage-onboarding-content-system",
+        "title": "5. Growth stage: onboarding + content system"
+      },
+      {
+        "id": "scale-stage-brand-full-funnel",
+        "title": "6. Scale stage: brand + full funnel"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Not every SaaS company needs video on day one. But almost every SaaS company waits too long.",
+          "The question isn't whether you need video. It's when each type of video earns its ROI. The answer depends on your stage, your traffic, and what's bottlenecking your growth right now."
+        ]
+      },
+      {
+        "id": "pre-product-skip-video-entirely",
+        "heading": "Pre-product: skip video entirely",
+        "paragraphs": [
+          "If you're still building v1, the video is premature. Your message will change. Your positioning will shift. The video you make today will be wrong in 3 months.",
+          "Exception: if you're fundraising, a 60-second pitch video for cold outreach to investors can earn its cost back in one meeting. But keep it simple — no premium production needed yet."
+        ]
+      },
+      {
+        "id": "post-launch-pre-traction-homepage-explainer",
+        "heading": "Post-launch, pre-traction: homepage explainer",
+        "paragraphs": [
+          "You have a live product. A few early users. You're driving some traffic to your website. But your conversion rate is stuck because visitors can't quickly understand what you do.",
+          "This is when a homepage explainer video pays for itself fastest. It reduces bounce rate, increases time on page, and gives visitors an immediate reason to care. Most of our clients see measurable conversion improvement within 30 days of adding a homepage video.",
+          "Budget: $2,000-3,000 for a single 60-second explainer."
+        ]
+      },
+      {
+        "id": "product-market-fit-product-demo-sales-enablement",
+        "heading": "Product-market fit: product demo + sales enablement",
+        "paragraphs": [
+          "You've found your market. Sales calls are happening. But demos take 45 minutes because half the call is spent explaining basics.",
+          "A product demo video changes this equation. Send it before the call. The prospect arrives already understanding the product — so the conversation focuses on fit, pricing, and implementation instead of \"so what does it do?\"",
+          "Add 2-3 social cutdowns from the same production, and you have paid ad creative too.",
+          "Budget: $3,000-5,000 for a demo + social package."
+        ]
+      },
+      {
+        "id": "growth-stage-onboarding-content-system",
+        "heading": "Growth stage: onboarding + content system",
+        "paragraphs": [
+          "Users are signing up. Revenue is growing. But churn is a problem because users don't reach value fast enough.",
+          "Onboarding videos solve this. 3-5 short task-focused videos that guide users from signup to first win. Each video replaces a support article that nobody reads.",
+          "At this stage, you also need a content engine. Launch feature videos every sprint cycle. Social ad creative that refreshes monthly. Customer stories. This is where a VaaS retainer makes more sense than one-off projects.",
+          "Budget: $4,000+/month on retainer."
+        ]
+      },
+      {
+        "id": "scale-stage-brand-full-funnel",
+        "heading": "Scale stage: brand + full funnel",
+        "paragraphs": [
+          "You're past $5M ARR. You have a marketing team. Video is no longer a question — it's a channel. You need a brand video to anchor your identity, a library of product content, and a production partner who can move at your speed.",
+          "This is where investment in video compounds. Every new video makes the existing ones work harder — brand video warms prospects for your explainer, explainer converts for your demo, demo accelerates for your onboarding.",
+          "Budget: $6,000-10,000/month for full-funnel video production."
+        ]
+      },
+      {
+        "id": "the-most-expensive-mistake",
+        "heading": "The most expensive mistake",
+        "paragraphs": [
+          "Waiting until \"the product is ready\" or \"the brand is finalized\" before investing in video. Your product will never be done. Your brand will always evolve. A good video today beats a perfect video that never ships.",
+          "Start where you are. Build what you need now. Update it when things change."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "video-as-a-service-vaas-why-saas-companies-are-moving-to-retainer-based-video-production",
+    "title": "Video as a Service (VaaS): Why SaaS Companies Are Moving to Retainer-Based Video Production",
+    "excerpt": "Video as a Service: why SaaS companies are switching from one-off projects to retainer-based video production. How VaaS works and when it makes sense.",
+    "category": "Explainer Strategy",
+    "date": "Apr 18, 2026",
+    "isoDate": "2026-04-18T08:35:38+0700",
+    "readTime": "4 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/69dc47421f1ad26ac8e23b04/1780287743674/Frame+12.png?format=1500w",
+    "coverImageAlt": "Video as a Service (VaaS): Why SaaS Companies Are Moving to Retainer-Based Video Production",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "Video as a Service (VaaS): Why SaaS Companies Are Moving to Retainer-Based Video Production | PStudio Blog",
+      "metaDescription": "Video as a Service: why SaaS companies are switching from one-off projects to retainer-based video production. How VaaS works and when it makes sense.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "what-is-video-as-a-service",
+        "title": "2. What is Video as a Service?"
+      },
+      {
+        "id": "why-the-project-model-breaks-down-for-scaling-companies",
+        "title": "3. Why the project model breaks down for scaling companies"
+      },
+      {
+        "id": "what-a-vaas-retainer-looks-like-in-practice",
+        "title": "4. What a VaaS retainer looks like in practice"
+      },
+      {
+        "id": "who-vaas-is-right-for",
+        "title": "5. Who VaaS is right for"
+      },
+      {
+        "id": "getting-started",
+        "title": "6. Getting started"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Most SaaS companies treat video like a one-time project. Brief a studio. Wait 4 weeks. Get one video. Use it until it's outdated. Start over.",
+          "That model made sense when video was a nice-to-have. In 2026, video is infrastructure. Your homepage needs it. Your sales team sends it. Your ads run on it. Your onboarding depends on it. And all of it needs to be updated every time your product, messaging, or market shifts.",
+          "That's why more SaaS companies are switching to Video as a Service—a retainer model where a dedicated production partner delivers video continuously, not project by project."
+        ]
+      },
+      {
+        "id": "what-is-video-as-a-service",
+        "heading": "What is Video as a Service?",
+        "paragraphs": [
+          "VaaS is exactly what it sounds like: ongoing video production on a monthly retainer. Instead of scoping, quoting, and contracting each video individually, you have a dedicated team that knows your brand, your product, and your audience—ready to produce whenever you need.",
+          "Think of it like hiring a fractional video team. You get the output of an in-house team without the payroll, the equipment, or the management overhead.",
+          "A typical VaaS arrangement includes a fixed monthly capacity (measured in video minutes or deliverables), priority production slots, a dedicated creative lead, and flexible output—explainer videos one month, social cutdowns the next, and a product demo the month after."
+        ]
+      },
+      {
+        "id": "why-the-project-model-breaks-down-for-scaling-companies",
+        "heading": "Why the project model breaks down for scaling companies",
+        "paragraphs": [
+          "The traditional project model has three problems that compound as you grow.",
+          "First, every new project starts from zero. A new studio means a new brand onboarding, a new style exploration, and a new round of \"let us understand your product.\" By project three, you've explained your product to three different teams. None of them remembers what the last one learned.",
+          "Second, production timelines don't match marketing timelines. Your product team ships a new feature on Tuesday. Your marketing team needs a video by Friday. A 4-week project timeline doesn't work when your roadmap moves weekly.",
+          "Third, costs are unpredictable. One video costs $3,000. Three months later, another one costs $4,500 because the scope crept. Budget planning becomes guesswork.",
+          "VaaS solves all three: same team every month, faster turnaround because context is already loaded, and a fixed monthly cost you can budget for."
+        ]
+      },
+      {
+        "id": "what-a-vaas-retainer-looks-like-in-practice",
+        "heading": "What a VaaS retainer looks like in practice",
+        "paragraphs": [
+          "At PSTUDIO, our Creative Partner model works like this:",
+          "You get a dedicated team — same motion designers, same project lead, same brand knowledge. Monthly output is flexible — explainers, demos, cutdowns, ads, onboarding videos. You choose what you need each month based on your marketing calendar.",
+          "Priority production means your projects jump the queue. When your product team ships something new, you don't wait 3 weeks to start — you brief us Monday, we deliver by Friday of the following week.",
+          "The minimum commitment is 6 months. Not because we need to lock you in, but because the real value of VaaS compounds over time. By month 3, your team stops explaining things. By month 6, we're anticipating what you need before you ask."
+        ]
+      },
+      {
+        "id": "who-vaas-is-right-for",
+        "heading": "Who VaaS is right for",
+        "paragraphs": [
+          "VaaS works best for companies that produce video regularly — at least 2-3 videos per quarter. If you only need one video per year, a single project is more cost-effective.",
+          "The sweet spot: Series A+ SaaS companies with a marketing team that owns video as a channel. Product marketing managers need feature launch videos every sprint cycle. Growth teams running video ads that need constant creative refreshes.",
+          "If your team has ever said, \"We need video, but we don't have bandwidth to manage another production cycle,\" — VaaS is the answer."
+        ]
+      },
+      {
+        "id": "getting-started",
+        "heading": "Getting started",
+        "paragraphs": [
+          "Our Creative Partner retainer starts from $3,000/month with a 6-month minimum. This includes dedicated team capacity, priority production, and flexible monthly output.",
+          "Book a strategy call, and we'll map out what a VaaS engagement looks like for your specific content needs."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "explainer-video-trends-in-2026-whats-working-and-whats-fading",
+    "title": "Explainer Video Trends in 2026: What's Working and What's Fading",
+    "excerpt": "Explainer video trends in 2026: AI-assisted production, shorter social cuts, and problem-first scripting are in. Whiteboard animation is out",
+    "category": "Explainer Strategy",
+    "date": "Apr 12, 2026",
+    "isoDate": "2026-04-12T18:16:01+0700",
+    "readTime": "4 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/69c36f8f3da96e45a822ccbb/1780287692363/Frame+10.png?format=1500w",
+    "coverImageAlt": "Explainer Video Trends in 2026: What's Working and What's Fading",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "Explainer Video Trends in 2026: What's Working and What's Fading | PStudio Blog",
+      "metaDescription": "Explainer video trends in 2026: AI-assisted production, shorter social cuts, and problem-first scripting are in. Whiteboard animation is out",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "working-ai-assisted-production-but-not-ai-generated-videos",
+        "title": "2. Working: AI-assisted production (but not AI-generated videos)"
+      },
+      {
+        "id": "working-shorter-videos-for-social-longer-for-sales",
+        "title": "3. Working: shorter videos for social, longer for sales"
+      },
+      {
+        "id": "working-problem-first-scripting",
+        "title": "4. Working: problem-first scripting"
+      },
+      {
+        "id": "fading-whiteboard-animation",
+        "title": "5. Fading: whiteboard animation"
+      },
+      {
+        "id": "fading-character-heavy-storytelling",
+        "title": "6. Fading: character-heavy storytelling"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "Every year, new video styles and techniques emerge. Some stick. Most don't. After producing explainer videos for 4 years and watching the market shift, here's what's actually working in 2026 — and what you should ignore."
+        ]
+      },
+      {
+        "id": "working-ai-assisted-production-but-not-ai-generated-videos",
+        "heading": "Working: AI-assisted production (but not AI-generated videos)",
+        "paragraphs": [
+          "AI has changed how studios work — faster scripting, quicker iteration, smarter storyboard exploration. At PSTUDIO, we use AI tools to accelerate the production process without replacing the creative judgment that makes a video effective.",
+          "What doesn't work: fully AI-generated videos. The technology produces generic output that looks and sounds like every other AI video. In a market where differentiation matters, looking like a template hurts your brand more than having no video at all.",
+          "The winning formula in 2026: AI for speed, humans for strategy and creativity."
+        ]
+      },
+      {
+        "id": "working-shorter-videos-for-social-longer-for-sales",
+        "heading": "Working: shorter videos for social, longer for sales",
+        "paragraphs": [
+          "The one-size-fits-all 90-second explainer is dead. In 2026, the most effective approach is a video system: a 60-90 second hero video for your website, plus 15-30 second cutdowns for LinkedIn, YouTube pre-roll, Instagram, and TikTok.",
+          "Different platforms, different attention spans, different contexts. A video that works on your homepage doesn't work as a LinkedIn ad. Plan for multiple formats from the start."
+        ]
+      },
+      {
+        "id": "working-problem-first-scripting",
+        "heading": "Working: problem-first scripting",
+        "paragraphs": [
+          "This isn't new, but it's more important than ever. Viewers in 2026 have zero patience for product introductions. If your video doesn't name a problem the viewer already feels within the first 8 seconds, they're gone.",
+          "The best scripts open with a specific pain point — not a category problem. \"Managing remote teams is hard\" doesn't work. \"Your Slack has 47 unread threads, and nobody knows who's responsible for the launch.\""
+        ]
+      },
+      {
+        "id": "fading-whiteboard-animation",
+        "heading": "Fading: whiteboard animation",
+        "paragraphs": [
+          "Whiteboard animation had its moment from 2014 to 2018. In 2026, it looks dated and budget-constrained. Clients who request whiteboard style usually want it because it seems cheaper — but the production time is similar, and the result feels less professional.",
+          "Modern 2D motion graphics achieve the same educational clarity with a more polished, brand-consistent aesthetic."
+        ]
+      },
+      {
+        "id": "fading-character-heavy-storytelling",
+        "heading": "Fading: character-heavy storytelling",
+        "paragraphs": [
+          "Videos built around cartoon characters following a narrative (\"Meet Sarah, a busy marketing manager who...\") are losing effectiveness. B2B buyers in 2026 prefer direct, workflow-focused content over fictional stories about fictional people.",
+          "Characters still work in consumer-facing and healthcare contexts. But for SaaS and B2B tech, show the product, not a character."
+        ]
+      },
+      {
+        "id": "fading-3-minute-product-tours",
+        "heading": "Fading: 3-minute product tours",
+        "paragraphs": [
+          "Nobody watches a 3-minute product tour. The data is clear: watch-through rates drop dramatically after 90 seconds for any video that isn't entertainment content.",
+          "If you need to explain your full product, build a series of short videos — each focused on one feature or workflow. Let the viewer choose what to watch based on what matters to them."
+        ]
+      },
+      {
+        "id": "what-this-means-for-your-next-video",
+        "heading": "What this means for your next video",
+        "paragraphs": [
+          "Keep it short. Lead with the problem. Plan for multiple formats. Use AI to work faster, not to replace human creativity. And invest in 2D motion graphics that will look as good in 18 months as they do today.",
+          "If you're planning an explainer video in 2026, start with a strategy call. We'll help you choose the right format, length, and approach for your specific audience and goals."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "how-much-does-an-explainer-video-cost-in-2026-a-realistic-breakdown",
+    "title": "How Much Does an Explainer Video Cost in 2026? A Realistic Breakdown",
+    "excerpt": "Explainer video costs range from $500 to $50K. Here's an honest breakdown of what drives the price and what you should expect at each level.",
+    "category": "Explainer Strategy",
+    "date": "Mar 23, 2026",
+    "isoDate": "2026-03-23T22:44:17+0700",
+    "readTime": "4 min read",
+    "featured": false,
+    "coverImage": "http://static1.squarespace.com/static/616d9e6d71f4f91a6e04df8b/69b628751fe5cd33ec59e0a8/69c15e12f1fcd01af9f5b35f/1780287562618/Frame+3.png?format=1500w",
+    "coverImageAlt": "How Much Does an Explainer Video Cost in 2026? A Realistic Breakdown",
+    "author": {
+      "name": "Trien Pham",
+      "role": "Founder & Creative Director at PStudio",
+      "avatar": "/image/Work/4.6.webp"
+    },
+    "seo": {
+      "metaTitle": "How Much Does an Explainer Video Cost in 2026? A Realistic Breakdown | PStudio Blog",
+      "metaDescription": "Explainer video costs range from $500 to $50K. Here's an honest breakdown of what drives the price and what you should expect at each level.",
+      "keywords": [
+        "Explainer Video",
+        "Explainer Strategy",
+        "PStudio",
+        "SaaS Marketing",
+        "Video Production"
+      ]
+    },
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "title": "1. Overview"
+      },
+      {
+        "id": "the-three-pricing-tiers",
+        "title": "2. The three pricing tiers"
+      },
+      {
+        "id": "what-actually-drives-the-cost",
+        "title": "3. What actually drives the cost"
+      },
+      {
+        "id": "the-real-question-what-s-the-roi",
+        "title": "4. The real question: what's the ROI?"
+      },
+      {
+        "id": "what-we-charge-at-pstudio",
+        "title": "5. What we charge at PSTUDIO"
+      },
+      {
+        "id": "how-to-get-the-most-from-your-budget",
+        "title": "6. How to get the most from your budget"
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "paragraphs": [
+          "If you Google \"explainer video cost,\" you'll get answers ranging from $500 to $50,000. That range is technically accurate and practically useless.",
+          "The real answer depends on three things: who makes it, what it needs to do, and where you plan to use it.",
+          "After producing 200+ explainer videos for SaaS, tech, healthcare, and industrial companies, here's an honest breakdown of what drives the price—and what you should expect at each level."
+        ]
+      },
+      {
+        "id": "the-three-pricing-tiers",
+        "heading": "The three pricing tiers",
+        "paragraphs": [
+          "Under $2,000: Template-based production. At this level, you're getting a video built from pre-made templates with stock illustrations, a generic voiceover, and limited customization. These work for internal presentations or quick social clips. They don't work as the centerpiece of your homepage or sales funnel.",
+          "$2,000 – $7,000: Custom production from a specialized studio. This is where most B2B SaaS and tech companies land. You get a custom script, original illustration, professional animation, a dedicated project manager, and platform-ready delivery. The video is built for your specific audience and designed to perform in a specific context—your homepage, your sales outreach, and your paid ads.",
+          "$7,000 – $25,000+: Premium production with strategy. This tier includes deeper strategic involvement: audience research, message testing, multiple revision rounds, and sometimes multiple video deliverables (a hero video plus social cutdowns). Large enterprise companies and well-funded startups typically operate here."
+        ]
+      },
+      {
+        "id": "what-actually-drives-the-cost",
+        "heading": "What actually drives the cost",
+        "paragraphs": [
+          "Length. A 60-second video costs less than a 120-second video. But don't assume longer is better—most high-performing explainer videos are 60-90 seconds. Beyond that, you're usually saying too much, not too little.",
+          "Custom illustration vs. stock. An original illustration designed specifically for your brand costs more but looks dramatically better and lasts longer. Stock-based videos look generic and age quickly.",
+          "Script complexity. If you need scriptwriting (most companies do), that adds to the scope. A good script takes 1-2 weeks to get right. This is where most of the strategic value lives — a great script with average animation outperforms a bad script with beautiful animation every time.",
+          "Revisions. Studios that offer unlimited revisions tend to build that cost into their base price. Studios that offer 2-3 rounds of revisions at each stage keep costs lower and timelines shorter. Both models work — just make sure you understand what you're paying for.",
+          "Voiceover. Professional voiceover talent ranges from $200-$1,000+, depending on experience, language, and usage rights. AI voiceover is cheaper but often sounds flat in longer videos."
+        ]
+      },
+      {
+        "id": "the-real-question-what-s-the-roi",
+        "heading": "The real question: what's the ROI?",
+        "paragraphs": [
+          "The better question isn't \"How much does an explainer video cost?\" It's \"What will this video do for my business?\"",
+          "A $3,000 explainer video on your homepage that increases conversion by even 10% will pay for itself in weeks. A $500 template video that looks generic and doesn't convert is the more expensive option—it just doesn't feel like it.",
+          "Think about where the video will live and what metric it should move. Then budget accordingly."
+        ]
+      },
+      {
+        "id": "what-we-charge-at-pstudio",
+        "heading": "What we charge at PSTUDIO",
+        "paragraphs": [
+          "We're transparent about pricing because we think it saves everyone time.",
+          "Single explainer videos start from $2,000 for a 60-second production. Our Starter Package — 1 hero video + 3 social cutdowns — starts from $3,000. Monthly retainers for ongoing content start from $4,000.",
+          "Every project includes a script, a storyboard, custom animation, sound design, and platform-ready formats. No hidden fees."
+        ]
+      },
+      {
+        "id": "how-to-get-the-most-from-your-budget",
+        "heading": "How to get the most from your budget",
+        "paragraphs": [
+          "Start with one hero video. Make it great. Use it everywhere—homepage, sales emails, LinkedIn, YouTube, and investor deck.",
+          "Once that video is performing, build from there: product demos, ad cut-downs, and onboarding videos. A single well-produced explainer gives you 6+ months of content across channels.",
+          "That's a better investment than three cheap videos that nobody watches twice."
+        ]
+      }
+    ]
+  }
+];
