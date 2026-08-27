@@ -4,28 +4,27 @@ import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
-// Double brush underline beneath CTA heading
+// Animated Hand-drawn Underline from /image/2 underline.svg beneath CTA heading
 function BrushUnderline() {
   return (
-    <div className="relative w-full max-w-[620px] sm:max-w-[720px] h-12 sm:h-16 mx-auto -mt-2 sm:-mt-4 mb-8 sm:mb-12 pointer-events-none select-none">
-      <svg
-        viewBox="0 0 700 80"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
-      >
-        {/* Upper Brush Stroke */}
-        <path
-          d="M10 25 C180 15, 420 12, 680 28 C550 32, 340 34, 10 25 Z"
-          fill="#20D38E"
-        />
-        {/* Lower Sweeping Brush Stroke */}
-        <path
-          d="M160 52 C320 42, 540 44, 690 56 C580 62, 380 64, 160 52 Z"
-          fill="#20D38E"
-        />
-      </svg>
-    </div>
+    <motion.div
+      initial={{ clipPath: 'inset(0% 100% 0% 0%)', opacity: 0 }}
+      whileInView={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+        delay: 0.35,
+      }}
+      className="relative w-full max-w-[380px] sm:max-w-[540px] md:max-w-[660px] lg:max-w-[750px] aspect-[771/106] mx-auto mt-1 sm:mt-2 md:mt-2.5 lg:mt-3 pointer-events-none select-none flex items-center justify-center will-change-transform"
+    >
+      <img
+        src="/image/2 underline.svg"
+        alt="Underline Decoration"
+        className="w-full h-full object-contain"
+        draggable={false}
+      />
+    </motion.div>
   )
 }
 
@@ -91,57 +90,45 @@ function InteractiveEyes() {
   )
 }
 
-// Giant White P + Orange Star Vector
+// Giant White P + Orange Star Vector from /image/logoIcon.svg
 function GiantPLogo() {
   return (
-    <div className="relative w-[160px] sm:w-[220px] lg:w-[280px] aspect-[260/340] select-none pointer-events-none">
-      <svg
-        viewBox="0 0 280 360"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
-      >
-        {/* Giant White "P" Stem & Loop */}
-        <path
-          d="M48 20 C130 20, 200 65, 200 145 C200 220, 130 260, 48 260 H48 V340 H0 V20 H48 Z M48 70 V210 C98 210, 148 185, 148 140 C148 95, 98 70, 48 70 Z"
-          fill="#FFFFFF"
-        />
-        {/* 4-Point Sparkle Star in Vivid Orange */}
-        <path
-          d="M175 295 C175 255, 145 225, 105 225 C145 225, 175 195, 175 155 C175 195, 205 225, 245 225 C205 225, 175 255, 175 295 Z"
-          fill="#FF723B"
-        />
-      </svg>
+    <div className="relative w-[180px] sm:w-[240px] lg:w-[290px] aspect-[427/552] select-none pointer-events-none">
+      <img
+        src="/image/logoIcon.svg"
+        alt="PStudio Logo Icon"
+        className="w-full h-full object-contain"
+        draggable={false}
+      />
     </div>
   )
 }
 
-// 4-Point Star bullet icon
+// 8-Point Star bullet icon from /image/star.svg
 function StarBullet() {
   return (
-    <svg 
-      viewBox="0 0 24 24" 
-      fill="currentColor" 
-      className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#111827] flex-shrink-0"
-    >
-      <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
-    </svg>
+    <img
+      src="/image/star.svg"
+      alt="Star bullet"
+      className="w-4 h-4 sm:w-[18px] sm:h-[18px] object-contain flex-shrink-0"
+      draggable={false}
+    />
   )
 }
 
 export default function CalloutFooter() {
   return (
-    <footer className="relative w-full bg-[#FFFFFF] pt-24 sm:pt-32 lg:pt-40 flex flex-col z-20 overflow-hidden">
+    <footer className="relative w-full bg-[#FFFFFF] pt-20 sm:pt-28 lg:pt-36 flex flex-col z-20 overflow-hidden">
       
       {/* 1. TOP CALL TO ACTION SECTION (White Background) */}
-      <div className="w-full max-w-[1512px] mx-auto px-[24px] flex flex-col items-center text-center pb-24 sm:pb-32 lg:pb-36">
+      <div className="w-full max-w-[1200px] mx-auto px-[24px] flex flex-col items-center text-center pb-20 sm:pb-28 lg:pb-32">
         
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-[44px] sm:text-[64px] lg:text-[84px] xl:text-[96px] leading-[1.02] tracking-[-0.04em] text-[#111827] max-w-[960px] mx-auto"
+          className="font-display font-medium text-[44px] sm:text-[62px] md:text-[76px] lg:text-[88px] xl:text-[96px] leading-[1.05] tracking-[-0.035em] text-[#111827] max-w-[900px] mx-auto"
         >
           Ready to make<br />your product<br />easier to buy?
         </motion.h2>
@@ -153,10 +140,11 @@ export default function CalloutFooter() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 sm:mt-8 md:mt-10"
         >
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-4.5 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[20px] sm:text-[22px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
+            className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#20D38E] text-[#0A3D2A] font-display font-medium text-[18px] sm:text-[19px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
           >
             Say Hello
           </Link>

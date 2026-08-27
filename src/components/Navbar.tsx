@@ -2,16 +2,18 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 
 const navLinks = [
   { name: 'Work', href: '/#work' },
-  { name: 'About us', href: '/#about' },
+  { name: 'About us', href: '/about' },
   { name: 'Blog', href: '/blog' },
 ]
 
 export default function Navbar() {
+  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -23,6 +25,20 @@ export default function Navbar() {
 
       // Check if scrolled past top
       setIsScrolled(currentScrollY > 20)
+
+      // When inside the Process section, keep navbar hidden even if scrolling up
+      const processElem = document.getElementById('process')
+      if (processElem) {
+        const rect = processElem.getBoundingClientRect()
+        // If the viewport is engaged inside the process horizontal scroll track
+        const isInsideProcess = rect.top <= 60 && rect.bottom >= window.innerHeight - 60
+        if (isInsideProcess) {
+          setIsVisible(false)
+          setMobileMenuOpen(false)
+          lastScrollY.current = currentScrollY
+          return
+        }
+      }
 
       // Scroll Down -> Hide Navbar, Scroll Up -> Reveal Navbar
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
@@ -59,15 +75,22 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links - Centered with elegant tighter spacing */}
           <nav className="hidden md:flex col-span-4 justify-center items-center gap-6 lg:gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-base lg:text-[17px] font-medium text-studio-dark hover:text-black transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-green after:transition-all hover:after:w-full inline-block"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-base lg:text-[17px] font-medium transition-colors relative py-1 inline-block ${
+                    isActive
+                      ? 'text-black after:w-full font-semibold'
+                      : 'text-studio-dark hover:text-black after:w-0 hover:after:w-full'
+                  } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-accent-green after:transition-all`}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
           </nav>
 
           {/* Action CTA Button - Ends at Column 12 */}
@@ -108,16 +131,21 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="absolute top-full left-[24px] right-[24px] mt-2 p-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-black/5 flex flex-col gap-4 md:hidden z-50"
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium text-studio-dark hover:text-accent-green transition-colors py-2 border-b border-black/5"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-lg font-medium transition-colors py-2 border-b border-black/5 ${
+                      isActive ? 'text-accent-green font-semibold' : 'text-studio-dark hover:text-accent-green'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )
+              })}
               <Link
                 href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}

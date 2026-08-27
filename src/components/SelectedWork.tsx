@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 // Vector Mezmo Telemetry Pipeline Artwork matching Figma Node 33:49 (Clean Rectangular Flush Edges 4:5 Aspect Ratio, No Shadow, No Border)
 function MezmoArtwork() {
   return (
-    <div className="relative w-full aspect-[4/5] bg-[#050E07] rounded-none overflow-hidden flex items-center justify-center">
+    <div className="relative w-full aspect-[4/3] bg-[#050E07] rounded-none overflow-hidden flex items-center justify-center">
       {/* Top & Bottom Neon Yellow Accents */}
       <div className="absolute top-0 left-0 right-0 h-8 sm:h-12 flex items-start justify-center">
         <div className="w-[85%] h-full bg-[#E5FC6B] [clip-path:polygon(0_0,100%_0,85%_100%,15%_100%)] opacity-95" />
@@ -137,18 +137,18 @@ export default function SelectedWork() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex flex-col items-start justify-start"
           >
-            <div className="w-full max-w-[560px]">
-              <h3 className="font-display font-medium text-[36px] sm:text-[44px] lg:text-[52px] xl:text-[60px] leading-[1.08] tracking-[-0.035em] text-[#111827] mb-4 sm:mb-5">
+            <div className="w-full max-w-[620px]">
+              <h3 className="font-display font-medium text-[44px] sm:text-[54px] lg:text-[64px] xl:text-[72px] leading-[1.04] tracking-[-0.035em] text-[#111827] mb-5 sm:mb-6">
                 Mezmo<br />Telemetry<br />Pipeline
               </h3>
 
-              <p className="font-sans text-[15px] sm:text-[16px] lg:text-[17px] text-gray-700 font-normal leading-relaxed tracking-[-0.01em] mb-6 sm:mb-8">
+              <p className="font-sans text-[18px] sm:text-[20px] lg:text-[22px] text-gray-700 font-normal leading-relaxed tracking-[-0.01em] mb-7 sm:mb-9">
                 We&apos;ve solved the problem of turning Mezmo&apos;s complex data pipeline observability into a clear and compelling product story for SaaS buyers.
               </p>
 
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center px-7 py-3.5 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[16px] rounded-lg shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[18px] sm:text-[19px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
               >
                 Visit project
               </Link>
