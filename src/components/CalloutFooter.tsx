@@ -191,17 +191,50 @@ export default function CalloutFooter() {
 
             {/* Column 2: Social Networks */}
             <div className="flex flex-col space-y-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <a
+                href="https://www.linkedin.com/company/pstudiovn/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors"
+              >
                 <StarBullet />
                 <span>LinkedIn</span>
               </a>
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <a
+                href="https://www.facebook.com/pstudiovn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors"
+              >
+                <StarBullet />
+                <span>Facebook</span>
+              </a>
+              <a
+                href="https://www.behance.net/pstudiovn?tracking_source=search_projects%7CPstudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors"
+              >
                 <StarBullet />
                 <span>Behance</span>
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <a
+                href="https://vimeo.com/pstudiovietnam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors"
+              >
                 <StarBullet />
-                <span>Facebook</span>
+                <span>Vimeo</span>
+              </a>
+              <a
+                href="https://www.instagram.com/pstudiovn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors"
+              >
+                <StarBullet />
+                <span>Instagram</span>
               </a>
             </div>
 
