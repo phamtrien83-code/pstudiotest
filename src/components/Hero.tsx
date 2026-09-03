@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import TicketButton from './ui/TicketButton'
 
 export default function Hero() {
   return (
@@ -41,20 +42,13 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 sm:mt-8"
         >
-          <Link
+          <TicketButton
             href="#strategy"
-            className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl bg-accent-green text-black font-semibold text-lg sm:text-[20px] shadow-sm hover:shadow-xl hover:shadow-accent-green/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+            variant="accent"
+            size="lg"
           >
-            <span>Talk about your video strategy</span>
-            <svg
-              className="ml-2.5 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </Link>
+            Talk about your video strategy
+          </TicketButton>
         </motion.div>
       </div>
     </section>

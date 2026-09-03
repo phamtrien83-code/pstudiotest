@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useContactModal } from '@/context/ContactModalContext'
+import { IconX, IconArrowRight } from '@tabler/icons-react'
 
 // GSAP Timeline Animation with Staggered Entrance and Downward Collapse Exit
 const cardVariants = {
@@ -91,9 +92,7 @@ export default function ContactModal() {
                   aria-label="Close card"
                   className="absolute top-6 right-6 sm:top-8 sm:right-8 w-11 h-11 rounded-xl bg-black/5 hover:bg-black/10 flex items-center justify-center text-[#111111] transition-all hover:rotate-90 duration-300 focus:outline-none cursor-pointer z-10"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <IconX size={20} stroke={2.4} />
                 </button>
 
                 {/* Main Hero Headline */}
@@ -196,9 +195,10 @@ export default function ContactModal() {
                 <div className="flex items-center flex-shrink-0">
                   <a
                     href="mailto:contact@pstudio.vn?subject=Project%20Inquiry%20from%20Website"
-                    className="inline-flex items-center justify-center px-6 py-3.5 bg-[#111111] text-white rounded-xl font-sans font-medium text-sm sm:text-base hover:bg-black active:scale-95 transition-all shadow-sm"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#111111] text-white rounded-xl font-sans font-medium text-sm sm:text-base hover:bg-black active:scale-95 transition-all shadow-sm group"
                   >
-                    Send Brief &rarr;
+                    <span>Send Brief</span>
+                    <IconArrowRight size={16} stroke={2.4} className="transform group-hover:translate-x-0.5 transition-transform" />
                   </a>
                 </div>
               </motion.div>

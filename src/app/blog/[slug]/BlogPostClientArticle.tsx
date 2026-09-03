@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { BlogPost } from '@/data/blogPosts'
 import { useContactModal } from '@/context/ContactModalContext'
+import { IconLink, IconCheck } from '@tabler/icons-react'
 
 interface BlogPostClientArticleProps {
   post: BlogPost
@@ -158,7 +159,17 @@ export default function BlogPostClientArticle({
                 onClick={copyShareLink}
                 className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-xl text-xs font-medium text-[#111111] transition-colors flex items-center gap-1.5 active:scale-95"
               >
-                <span>{copied ? '✓ Copied!' : '🔗 Copy Link'}</span>
+                {copied ? (
+                  <>
+                    <IconCheck size={14} stroke={2.4} className="text-accent-forest" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <IconLink size={14} stroke={2.2} />
+                    <span>Copy Link</span>
+                  </>
+                )}
               </button>
 
               <a

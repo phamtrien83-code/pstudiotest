@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { IconChevronRight } from '@tabler/icons-react'
 
 interface FAQItem {
   id: string
@@ -121,19 +122,13 @@ export default function FAQ() {
 
                   {/* Arrow Icon with Smooth 90deg Rotation */}
                   <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-500 group-hover:text-black transition-colors">
-                    <motion.svg
+                    <motion.div
                       animate={{ rotate: isOpen ? 90 : 0 }}
                       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-4 h-4 sm:w-5 sm:h-5"
+                      className="flex items-center justify-center"
                     >
-                      <polyline points="9 18 15 12 9 6" />
-                    </motion.svg>
+                      <IconChevronRight size={20} stroke={2.4} />
+                    </motion.div>
                   </div>
                 </button>
 

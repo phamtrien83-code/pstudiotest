@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BlogPost, BLOG_CATEGORIES, BlogCategory } from '@/data/blogPosts'
+import { IconSearch, IconX } from '@tabler/icons-react'
 
 interface BlogClientViewProps {
   posts: BlogPost[]
@@ -155,20 +156,18 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                 placeholder="Search articles..."
                 className="w-full px-4 py-2.5 pl-10 bg-transparent border border-black/10 rounded-xl text-sm text-[#111111] placeholder-[#111111]/40 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
               />
-              <svg
-                className="absolute left-3.5 top-3 w-4 h-4 text-[#111111]/40 pointer-events-none"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <IconSearch
+                size={16}
+                stroke={2.2}
+                className="absolute left-3.5 top-3 text-[#111111]/40 pointer-events-none"
+              />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-2.5 text-xs text-[#111111]/40 hover:text-black"
+                  className="absolute right-3 top-2.5 p-0.5 rounded-full hover:bg-black/5 text-[#111111]/40 hover:text-black transition-colors"
+                  aria-label="Clear search"
                 >
-                  ✕
+                  <IconX size={14} stroke={2.4} />
                 </button>
               )}
             </div>

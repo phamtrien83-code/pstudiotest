@@ -4,6 +4,7 @@ import './globals.css'
 import FigmaGrid from '@/components/FigmaGrid'
 import { ContactModalProvider } from '@/context/ContactModalContext'
 import ContactModal from '@/components/ContactModal'
+import ProjectCursor from '@/components/ui/ProjectCursor'
 
 const archivo = Archivo({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="bg-background text-studio-dark font-body min-h-screen">
         <ContactModalProvider>
           <FigmaGrid />
+          <ProjectCursor />
           {children}
           <ContactModal />
         </ContactModalProvider>

@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 import { useContactModal } from '@/context/ContactModalContext'
+import TicketButton from './ui/TicketButton'
+import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const navLinks = [
   { name: 'Work', href: '/work' },
@@ -97,12 +99,13 @@ export default function Navbar() {
 
           {/* Action CTA Button - Ends at Column 12 */}
           <div className="hidden md:flex col-span-4 justify-end items-center">
-            <button
+            <TicketButton
               onClick={openContactModal}
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-accent-green text-black font-semibold text-base lg:text-[17px] hover:brightness-105 hover:shadow-lg hover:shadow-accent-green/20 active:scale-95 transition-all duration-200 cursor-pointer"
+              variant="accent"
+              size="sm"
             >
               Contact
-            </button>
+            </TicketButton>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -112,13 +115,11 @@ export default function Navbar() {
               className="p-2 rounded-lg text-studio-dark hover:bg-black/5 focus:outline-none"
               aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              {mobileMenuOpen ? (
+                <IconX size={24} stroke={2.2} />
+              ) : (
+                <IconMenu2 size={24} stroke={2.2} />
+              )}
             </button>
           </div>
         </div>
