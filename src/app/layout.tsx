@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Archivo } from 'next/font/google'
 import './globals.css'
 import FigmaGrid from '@/components/FigmaGrid'
+import { ContactModalProvider } from '@/context/ContactModalContext'
+import ContactModal from '@/components/ContactModal'
 
 const archivo = Archivo({
   subsets: ['latin'],
@@ -23,8 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={archivo.variable}>
       <body className="bg-background text-studio-dark font-body min-h-screen">
-        <FigmaGrid />
-        {children}
+        <ContactModalProvider>
+          <FigmaGrid />
+          {children}
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   )

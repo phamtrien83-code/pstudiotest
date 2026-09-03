@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
-import AboutQuoteSection from '@/components/about/AboutQuoteSection'
+import AboutHello from '@/components/about/AboutHello'
 import AboutStory from '@/components/about/AboutStory'
+import AboutQuoteSection from '@/components/about/AboutQuoteSection'
 import MeetTheTeam from '@/components/about/MeetTheTeam'
 import CalloutFooter from '@/components/CalloutFooter'
 
@@ -22,6 +23,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background text-studio-dark flex flex-col selection:bg-accent-green selection:text-black">
       <Navbar />
+      <AboutHello />
       <AboutStory />
       <AboutQuoteSection />
       <MeetTheTeam />

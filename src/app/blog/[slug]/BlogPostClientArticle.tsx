@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { BlogPost } from '@/data/blogPosts'
+import { useContactModal } from '@/context/ContactModalContext'
 
 interface BlogPostClientArticleProps {
   post: BlogPost
@@ -14,6 +15,7 @@ export default function BlogPostClientArticle({
   post,
   relatedPosts,
 }: BlogPostClientArticleProps) {
+  const { openContactModal } = useContactModal()
   const [activeSection, setActiveSection] = useState<string>('')
   const [copied, setCopied] = useState(false)
 
@@ -95,7 +97,7 @@ export default function BlogPostClientArticle({
 
       {/* 2. Hero Cover Banner */}
       <div className="w-full max-w-[1512px] mx-auto px-6 sm:px-10 lg:px-16 mb-16 sm:mb-20">
-        <div className="w-full aspect-[21/9] sm:aspect-[2.4/1] bg-gray-100 overflow-hidden border border-black/10">
+        <div className="w-full aspect-[21/9] sm:aspect-[2.4/1] bg-gray-100 overflow-hidden border border-black/10 rounded-2xl sm:rounded-3xl">
           <img
             src={post.coverImage}
             alt={post.coverImageAlt}
@@ -111,7 +113,7 @@ export default function BlogPostClientArticle({
         <aside className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col space-y-8 order-2 lg:order-1">
           
           {/* Table of Contents Card */}
-          <div className="bg-white p-6 sm:p-7 border border-black/10">
+          <div className="bg-white p-6 sm:p-7 border border-black/10 rounded-2xl shadow-sm">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#111111]/40 mb-4">
               Table of Contents
             </h4>
@@ -139,7 +141,7 @@ export default function BlogPostClientArticle({
           </div>
 
           {/* Social Share Bar */}
-          <div className="bg-white p-6 border border-black/10 flex flex-col">
+          <div className="bg-white p-6 border border-black/10 rounded-2xl shadow-sm flex flex-col">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#111111]/40 mb-3">
               Share this insight
             </h4>
@@ -147,7 +149,7 @@ export default function BlogPostClientArticle({
             <div className="flex items-center gap-3">
               <button
                 onClick={copyShareLink}
-                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-full text-xs font-medium text-[#111111] transition-colors flex items-center gap-1.5 active:scale-95"
+                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-xl text-xs font-medium text-[#111111] transition-colors flex items-center gap-1.5 active:scale-95"
               >
                 <span>{copied ? '✓ Copied!' : '🔗 Copy Link'}</span>
               </button>
@@ -158,7 +160,7 @@ export default function BlogPostClientArticle({
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-full text-[#111111] transition-colors text-xs font-medium"
+                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-xl text-[#111111] transition-colors text-xs font-medium"
                 aria-label="Share on LinkedIn"
               >
                 LinkedIn
@@ -172,7 +174,7 @@ export default function BlogPostClientArticle({
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-full text-[#111111] transition-colors text-xs font-medium"
+                className="px-4 py-2 bg-black/5 hover:bg-black/10 rounded-xl text-[#111111] transition-colors text-xs font-medium"
                 aria-label="Share on X"
               >
                 X / Twitter
@@ -181,19 +183,19 @@ export default function BlogPostClientArticle({
           </div>
 
           {/* Quick CTA Box */}
-          <div className="bg-[#20D38E]/10 border border-[#20D38E]/30 p-6 sm:p-7 flex flex-col">
+          <div className="bg-[#20D38E]/10 border border-[#20D38E]/30 p-6 sm:p-7 rounded-2xl flex flex-col shadow-sm">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0D382A] mb-2">
               Need strategic videos?
             </span>
             <p className="text-sm text-[#0D382A]/80 mb-4 leading-relaxed font-sans">
               We help B2B SaaS teams turn complex telemetry and AI workflows into compelling product stories.
             </p>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-[#20D38E] text-[#0D382A] rounded-full text-sm font-semibold hover:brightness-105 transition-all text-center"
+            <button
+              onClick={openContactModal}
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-[#20D38E] text-[#0D382A] rounded-xl text-sm font-semibold hover:brightness-105 transition-all text-center cursor-pointer"
             >
               Book a Strategy Call
-            </Link>
+            </button>
           </div>
 
         </aside>
@@ -219,7 +221,7 @@ export default function BlogPostClientArticle({
 
               {/* Custom Quote Callout */}
               {sec.quote && (
-                <div className="my-6 p-6 sm:p-8 bg-black/[0.02] border-l-4 border-[#20D38E]">
+                <div className="my-6 p-6 sm:p-8 bg-black/[0.02] border-l-4 border-[#20D38E] rounded-r-2xl">
                   <p className="font-display italic text-[18px] sm:text-[22px] leading-relaxed text-[#111111] mb-2">
                     &ldquo;{sec.quote}&rdquo;
                   </p>
@@ -231,7 +233,7 @@ export default function BlogPostClientArticle({
 
               {/* Key Takeaways Box */}
               {sec.keyTakeaways && sec.keyTakeaways.length > 0 && (
-                <div className="my-6 p-6 sm:p-8 bg-[#20D38E]/10 border border-[#20D38E]/30">
+                <div className="my-6 p-6 sm:p-8 bg-[#20D38E]/10 border border-[#20D38E]/30 rounded-2xl shadow-sm">
                   <h4 className="font-display font-semibold text-base sm:text-lg text-[#0D382A] mb-4 flex items-center gap-2">
                     <span>💡</span>
                     <span>Key Strategic Takeaways</span>
@@ -270,22 +272,22 @@ export default function BlogPostClientArticle({
               <Link
                 key={relPost.slug}
                 href={`/blog/${relPost.slug}`}
-                className="group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300"
+                className="group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
               >
-                <div className="w-full aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <div className="w-full aspect-[16/9] bg-gray-100 overflow-hidden relative rounded-t-2xl sm:rounded-t-3xl">
                   <img
                     src={relPost.coverImage}
                     alt={relPost.coverImageAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-[#111111] border border-black/5">
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-xl text-xs font-semibold text-[#111111] border border-black/5">
                     {relPost.readTime}
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                   <div>
-                    <span className="px-2.5 py-0.5 bg-black/5 text-[#111111] rounded-full font-semibold text-xs mb-3 inline-block">
+                    <span className="px-2.5 py-0.5 bg-black/5 text-[#111111] rounded-xl font-semibold text-xs mb-3 inline-block">
                       {relPost.category}
                     </span>
                     <h4 className="font-display font-medium text-xl sm:text-2xl leading-snug tracking-[-0.025em] text-[#111111] group-hover:text-black transition-colors mb-2">

@@ -48,7 +48,7 @@ function FloatingImageCard({
   return (
     <motion.div
       style={{ y: yMotion, zIndex }}
-      className={`absolute overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.08)] border border-black/5 bg-white will-change-transform ${className}`}
+      className={`absolute overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.08)] border border-black/5 bg-white will-change-transform rounded-2xl sm:rounded-3xl ${className}`}
     >
       <Image
         src={src}
@@ -295,7 +295,7 @@ export default function AboutQuoteSection() {
             We didn&apos;t start as a strategy studio
           </h2>
           <div className="grid grid-cols-2 gap-3 w-full">
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_1.workspace}
                 alt="Workspace"
@@ -304,7 +304,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_1.teamOcean}
                 alt="Team"
@@ -313,7 +313,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_1.teamTrip}
                 alt="Trip"
@@ -322,7 +322,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_1.teamDinner}
                 alt="Dinner"
@@ -351,7 +351,7 @@ export default function AboutQuoteSection() {
             </div>
           </h2>
           <div className="grid grid-cols-2 gap-3 w-full">
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_2.wireframe}
                 alt="Wireframes"
@@ -360,7 +360,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_2.designBoard}
                 alt="Design Guidelines"
@@ -369,7 +369,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_2.motionEdit}
                 alt="Motion edit"
@@ -378,7 +378,7 @@ export default function AboutQuoteSection() {
                 sizes="50vw"
               />
             </div>
-            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden border border-black/5 shadow-sm rounded-xl sm:rounded-2xl">
               <Image
                 src={IMAGES_PHASE_2.codeScreen}
                 alt="Code screen"

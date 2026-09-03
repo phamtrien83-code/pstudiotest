@@ -69,16 +69,16 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
           >
             <Link
               href={`/blog/${featuredPost.slug}`}
-              className="group w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white p-6 sm:p-8 lg:p-10 border border-transparent hover:border-accent-green transition-all duration-300 items-center"
+              className="group w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-transparent hover:border-accent-green transition-all duration-300 items-center shadow-sm"
             >
               {/* Featured Cover Artwork */}
-              <div className="lg:col-span-7 w-full aspect-[16/10] bg-gray-100 overflow-hidden relative">
+              <div className="lg:col-span-7 w-full aspect-[16/10] bg-gray-100 overflow-hidden relative rounded-xl sm:rounded-2xl">
                 <img
                   src={featuredPost.coverImage}
                   alt={featuredPost.coverImageAlt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-[#111111] border border-black/5 shadow-sm">
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-xl text-xs font-semibold uppercase tracking-wider text-[#111111] border border-black/5 shadow-sm">
                   Featured
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
               <div className="lg:col-span-5 flex flex-col justify-between h-full py-2">
                 <div>
                   <div className="flex items-center gap-3 text-xs sm:text-sm text-[#111111]/60 font-medium mb-4">
-                    <span className="px-3 py-1 bg-black/5 text-[#111111] rounded-full font-semibold">
+                    <span className="px-3 py-1 bg-black/5 text-[#111111] rounded-xl font-semibold">
                       {featuredPost.category}
                     </span>
                     <span>&bull;</span>
@@ -131,7 +131,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                     isSelected
                       ? 'bg-[#111111] text-white'
                       : 'bg-transparent text-[#111111]/70 hover:text-black border border-black/10 hover:border-black/30'
@@ -150,7 +150,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search articles..."
-              className="w-full px-4 py-2.5 pl-10 bg-transparent border border-black/10 rounded-full text-sm text-[#111111] placeholder-[#111111]/40 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
+              className="w-full px-4 py-2.5 pl-10 bg-transparent border border-black/10 rounded-xl text-sm text-[#111111] placeholder-[#111111]/40 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
             />
             <svg
               className="absolute left-3.5 top-3 w-4 h-4 text-[#111111]/40 pointer-events-none"
@@ -188,7 +188,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                 setSelectedCategory('All')
                 setSearchQuery('')
               }}
-              className="px-5 py-2.5 bg-[#111111] text-white rounded-full font-medium text-sm hover:bg-black transition-all"
+              className="px-5 py-2.5 bg-[#111111] text-white rounded-xl font-medium text-sm hover:bg-black transition-all"
             >
               Reset filters
             </button>
@@ -204,7 +204,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className="group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300"
+                  className="group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
                 >
                   <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
                     
@@ -215,7 +215,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                         alt={post.coverImageAlt}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-[#111111] border border-black/5">
+                      <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-xl text-xs font-semibold text-[#111111] border border-black/5">
                         {post.readTime}
                       </div>
                     </div>
@@ -224,7 +224,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                     <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                       <div>
                         <div className="flex items-center gap-2 text-xs text-[#111111]/60 font-medium mb-3">
-                          <span className="px-2.5 py-0.5 bg-black/5 text-[#111111] rounded-full font-semibold">
+                          <span className="px-2.5 py-0.5 bg-black/5 text-[#111111] rounded-xl font-semibold">
                             {post.category}
                           </span>
                           <span>&bull;</span>

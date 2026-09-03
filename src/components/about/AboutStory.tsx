@@ -93,7 +93,7 @@ export default function AboutStory() {
   const rotateCw = useTransform(scrollYProgress, [0, 1], [0, 720])
 
   return (
-    <div className="relative w-full bg-background selection:bg-accent-green selection:text-black">
+    <div id="about-story" className="relative w-full bg-background selection:bg-accent-green selection:text-black">
       
       {/* ========================================================================= */}
       {/* DESKTOP / TABLET PINNED HORIZONTAL STORY TRACK                            */}

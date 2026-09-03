@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useContactModal } from '@/context/ContactModalContext'
 
 // Animated Hand-drawn Underline from /image/2 underline.svg beneath CTA heading
 function BrushUnderline() {
@@ -117,6 +118,8 @@ function StarBullet() {
 }
 
 export default function CalloutFooter() {
+  const { openContactModal } = useContactModal()
+
   return (
     <footer className="relative w-full bg-[#FFFFFF] pt-20 sm:pt-28 lg:pt-36 flex flex-col z-20 overflow-hidden">
       
@@ -142,12 +145,12 @@ export default function CalloutFooter() {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 sm:mt-8 md:mt-10"
         >
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#20D38E] text-[#0A3D2A] font-display font-medium text-[18px] sm:text-[19px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
+          <button
+            onClick={openContactModal}
+            className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#20D38E] text-[#0A3D2A] font-display font-medium text-[18px] sm:text-[19px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             Say Hello
-          </Link>
+          </button>
         </motion.div>
 
       </div>
@@ -171,22 +174,25 @@ export default function CalloutFooter() {
             
             {/* Column 1: Page Navigation */}
             <div className="flex flex-col space-y-4">
-              <Link href="#work" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <Link href="/#work" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
                 <StarBullet />
                 <span>Work</span>
               </Link>
-              <Link href="#about" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <Link href="/about" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
                 <StarBullet />
                 <span>About</span>
               </Link>
-              <Link href="#service" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <Link href="/#service" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
                 <StarBullet />
                 <span>Service</span>
               </Link>
-              <Link href="#contact" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+              <button
+                onClick={openContactModal}
+                className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors text-left cursor-pointer"
+              >
                 <StarBullet />
                 <span>Contact</span>
-              </Link>
+              </button>
             </div>
 
             {/* Column 2: Social Networks */}

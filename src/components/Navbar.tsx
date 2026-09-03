@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
+import { useContactModal } from '@/context/ContactModalContext'
 
 const navLinks = [
   { name: 'Work', href: '/#work' },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname()
+  const { openContactModal } = useContactModal()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -95,12 +97,12 @@ export default function Navbar() {
 
           {/* Action CTA Button - Ends at Column 12 */}
           <div className="hidden md:flex col-span-4 justify-end items-center">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-accent-green text-black font-semibold text-base lg:text-[17px] hover:brightness-105 hover:shadow-lg hover:shadow-accent-green/20 active:scale-95 transition-all duration-200"
+            <button
+              onClick={openContactModal}
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-accent-green text-black font-semibold text-base lg:text-[17px] hover:brightness-105 hover:shadow-lg hover:shadow-accent-green/20 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               Contact
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -146,13 +148,15 @@ export default function Navbar() {
                   </Link>
                 )
               })}
-              <Link
-                href="/#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 rounded-xl bg-accent-green text-black font-semibold text-base mt-2 shadow-md shadow-accent-green/20"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  openContactModal()
+                }}
+                className="w-full text-center py-3 rounded-xl bg-accent-green text-black font-semibold text-base mt-2 shadow-md shadow-accent-green/20 cursor-pointer"
               >
                 Contact
-              </Link>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
