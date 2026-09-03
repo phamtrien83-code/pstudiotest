@@ -8,7 +8,7 @@ import Logo from './Logo'
 import { useContactModal } from '@/context/ContactModalContext'
 
 const navLinks = [
-  { name: 'Work', href: '/#work' },
+  { name: 'Work', href: '/work' },
   { name: 'About us', href: '/about' },
   { name: 'Blog', href: '/blog' },
 ]

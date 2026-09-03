@@ -51,66 +51,73 @@ export default function BlogPostClientArticle({
   }
 
   return (
-    <article className="w-full flex flex-col pt-8 sm:pt-12 pb-24 sm:pb-32 selection:bg-accent-green selection:text-black">
+    <article className="w-full flex flex-col pt-28 sm:pt-36 pb-24 sm:pb-32 selection:bg-accent-green selection:text-black">
       
       {/* 1. Breadcrumbs & Meta Header */}
-      <div className="w-full max-w-[1512px] mx-auto px-6 sm:px-10 lg:px-16 mb-10 sm:mb-14">
-        
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#111111]/50 font-medium mb-8">
-          <Link href="/" className="hover:text-black transition-colors">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href="/blog" className="hover:text-black transition-colors">
-            Blog
-          </Link>
-          <span>/</span>
-          <span className="text-[#111111] truncate max-w-[200px] sm:max-w-none">
-            {post.category}
-          </span>
-        </nav>
+      <div className="w-full px-[24px] mb-10 sm:mb-14">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px]">
+          <div className="lg:col-span-10 xl:col-span-9 flex flex-col items-start">
+            
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#111111]/50 font-medium mb-8">
+              <Link href="/" className="hover:text-black transition-colors">
+                Home
+              </Link>
+              <span>/</span>
+              <Link href="/blog" className="hover:text-black transition-colors">
+                Blog
+              </Link>
+              <span>/</span>
+              <span className="text-[#111111] truncate max-w-[200px] sm:max-w-none">
+                {post.category}
+              </span>
+            </nav>
 
-        {/* Title & Metadata */}
-        <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-3 text-xs sm:text-sm text-[#111111]/60 font-medium mb-4">
-            <span className="px-3.5 py-1 bg-black/5 text-[#111111] rounded-full font-semibold">
-              {post.category}
-            </span>
-            <span>&bull;</span>
-            <span>{post.readTime}</span>
-            <span>&bull;</span>
-            <span>{post.date}</span>
+            {/* Title & Metadata */}
+            <div className="inline-flex items-center gap-3 text-xs sm:text-sm text-[#111111]/60 font-medium mb-4">
+              <span className="px-3.5 py-1 bg-black/5 text-[#111111] rounded-full font-semibold">
+                {post.category}
+              </span>
+              <span>&bull;</span>
+              <span>{post.readTime}</span>
+              <span>&bull;</span>
+              <span>{post.date}</span>
+            </div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display font-medium text-[36px] sm:text-[50px] lg:text-[62px] xl:text-[68px] leading-[1.06] tracking-[-0.035em] text-[#111111]"
+            >
+              {post.title}
+            </motion.h1>
+
           </div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-medium text-[36px] sm:text-[50px] lg:text-[62px] leading-[1.06] tracking-[-0.035em] text-[#111111]"
-          >
-            {post.title}
-          </motion.h1>
         </div>
-
       </div>
 
       {/* 2. Hero Cover Banner */}
-      <div className="w-full max-w-[1512px] mx-auto px-6 sm:px-10 lg:px-16 mb-16 sm:mb-20">
-        <div className="w-full aspect-[21/9] sm:aspect-[2.4/1] bg-gray-100 overflow-hidden border border-black/10 rounded-2xl sm:rounded-3xl">
-          <img
-            src={post.coverImage}
-            alt={post.coverImageAlt}
-            className="w-full h-full object-cover"
-          />
+      <div className="w-full px-[24px] mb-16 sm:mb-20">
+        <div className="w-full grid grid-cols-12 gap-[24px]">
+          <div className="col-span-12">
+            <div className="w-full aspect-[21/9] sm:aspect-[2.4/1] bg-gray-100 overflow-hidden border border-black/10 rounded-2xl sm:rounded-3xl">
+              <img
+                src={post.coverImage}
+                alt={post.coverImageAlt}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* 3. Main Editorial Content + Sticky Sidebar */}
-      <div className="w-full max-w-[1512px] mx-auto px-6 sm:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
-        {/* Sticky Left Sidebar (Table of Contents + Social Share) */}
-        <aside className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col space-y-8 order-2 lg:order-1">
+      <div className="w-full px-[24px]">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] items-start">
+          
+          {/* Sticky Left Sidebar (Table of Contents + Social Share) */}
+          <aside className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col space-y-8 order-2 lg:order-1">
           
           {/* Table of Contents Card */}
           <div className="bg-white p-6 sm:p-7 border border-black/10 rounded-2xl shadow-sm">
@@ -252,27 +259,29 @@ export default function BlogPostClientArticle({
           ))}
 
         </div>
-
       </div>
+    </div>
 
       {/* 4. Related Articles Section */}
       {relatedPosts.length > 0 && (
-        <section className="w-full max-w-[1512px] mx-auto px-6 sm:px-10 lg:px-16 mt-24 sm:mt-32 pt-16 border-t border-black/10">
-          <div className="flex flex-col mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#111111]/40 mb-2">
-              Keep Reading
-            </span>
-            <h3 className="font-display font-medium text-[32px] sm:text-[40px] tracking-[-0.035em] text-[#111111]">
-              Related Strategic Insights
-            </h3>
+        <section className="w-full px-[24px] mt-24 sm:mt-32 pt-16 border-t border-black/10">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] mb-10">
+            <div className="col-span-12 flex flex-col">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#111111]/40 mb-2">
+                Keep Reading
+              </span>
+              <h3 className="font-display font-medium text-[32px] sm:text-[40px] tracking-[-0.035em] text-[#111111]">
+                Related Strategic Insights
+              </h3>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[24px]">
             {relatedPosts.map((relPost) => (
               <Link
                 key={relPost.slug}
                 href={`/blog/${relPost.slug}`}
-                className="group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
+                className="col-span-1 md:col-span-1 lg:col-span-6 group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
               >
                 <div className="w-full aspect-[16/9] bg-gray-100 overflow-hidden relative rounded-t-2xl sm:rounded-t-3xl">
                   <img

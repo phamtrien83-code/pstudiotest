@@ -43,9 +43,16 @@ function StarAccent({
 // The ribbon is drawn stroke-first along its path, in lockstep with the
 // horizontal scroll — the line's leading tip advances as each screen slides in.
 function RibbonCanvas({ progress }: { progress: MotionValue<number> }) {
-  // Lead the scroll — the line finishes drawing well before the track does,
-  // so its tip is always ahead of the screen sliding into view.
-  const pathLength = useTransform(progress, [0, 0.65], [0, 1], { clamp: true })
+  // Synchronize ribbon stroke drawing: the leading tip emerges and starts drawing
+  // as the user scrolls near the About Story section (during approach phase 0.06 -> 0.227),
+  // then seamlessly continues across all 3 screens during the pinned horizontal journey,
+  // completing gracefully as Screen 3 settles into view.
+  const pathLength = useTransform(
+    progress,
+    [0.06, 0.227, 0.96],
+    [0, 0.16, 1],
+    { clamp: true }
+  )
 
   return (
     <div className="absolute top-[13vh] lg:top-[15vh] left-[-7vw] w-[314vw] h-[85vh] pointer-events-none z-0 overflow-visible will-change-transform">
@@ -80,17 +87,18 @@ function RibbonCanvas({ progress }: { progress: MotionValue<number> }) {
 export default function AboutStory() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Track vertical scroll across the pinning container
+  // Track vertical scroll from when the section begins entering the viewport ('start end')
+  // through the full horizontal pinned story until it exits ('end end').
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end'],
+    offset: ['start end', 'end end'],
   })
 
-  // Direct horizontal translation from 0vw to -200vw with zero latency
-  const x = useTransform(scrollYProgress, [0, 1], ['0vw', '-200vw'])
+  // Horizontal translation begins only once the section is pinned at the top (progress >= 0.227)
+  const x = useTransform(scrollYProgress, [0, 0.227, 1], ['0vw', '0vw', '-200vw'])
 
-  // Pure clockwise scroll-driven rotation for all decorative stars
-  const rotateCw = useTransform(scrollYProgress, [0, 1], [0, 720])
+  // Decorative star rotation activates in lockstep with the horizontal scroll
+  const rotateCw = useTransform(scrollYProgress, [0, 0.227, 1], [0, 0, 720])
 
   return (
     <div id="about-story" className="relative w-full bg-background selection:bg-accent-green selection:text-black">

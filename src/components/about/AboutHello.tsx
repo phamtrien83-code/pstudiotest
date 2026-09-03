@@ -63,7 +63,7 @@ export default function AboutHello() {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(handleNext, 5000)
+    const interval = setInterval(handleNext, 4000)
     return () => clearInterval(interval)
   }, [handleNext])
 
@@ -149,7 +149,7 @@ export default function AboutHello() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="font-display font-medium text-[84px] sm:text-[132px] md:text-[180px] lg:text-[228px] xl:text-[268px] 2xl:text-[296px] leading-none tracking-[-0.04em] text-studio-dark text-center select-none whitespace-nowrap cursor-pointer flex items-center justify-center"
+            className="font-display font-medium text-[84px] sm:text-[132px] md:text-[180px] lg:text-[228px] xl:text-[268px] 2xl:text-[296px] leading-none tracking-[-0.04em] text-accent-green text-center select-none whitespace-nowrap cursor-pointer flex items-center justify-center"
           >
             {Array.from(currentGreeting).map((char, index) => (
               <motion.span
