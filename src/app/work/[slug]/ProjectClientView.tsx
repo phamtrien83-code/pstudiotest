@@ -6,8 +6,6 @@ import { motion } from 'framer-motion'
 import { Project } from '@/data/projects'
 import Navbar from '@/components/Navbar'
 import CalloutFooter from '@/components/CalloutFooter'
-import { useContactModal } from '@/context/ContactModalContext'
-import TicketButton from '@/components/ui/TicketButton'
 import { IconArrowRight, IconArrowLeft } from '@tabler/icons-react'
 
 interface ProjectClientViewProps {
@@ -21,7 +19,6 @@ export default function ProjectClientView({
   prevProject,
   nextProject,
 }: ProjectClientViewProps) {
-  const { openContactModal } = useContactModal()
 
   // Ensure we have rich visual assets for the showcase layout:
   // Row 1: 2 items (half width)
@@ -254,72 +251,7 @@ export default function ProjectClientView({
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. STORY & STRATEGIC BREAKDOWN                                            */}
-      {/* ========================================================================= */}
-      {project.overview && (
-        <section className="w-full px-[24px] py-14 sm:py-20 bg-[#FAFAFA]">
-          <div className="max-w-6xl mx-auto flex flex-col gap-10">
-            {/* Story Card */}
-            <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-sm">
-              <span className="text-accent-forest text-xs font-semibold uppercase tracking-wider mb-2 block">
-                The Context &amp; Objective
-              </span>
-              <h2 className="font-display font-medium text-[26px] sm:text-[32px] text-[#111111] mb-4">
-                The Narrative
-              </h2>
-              <p className="font-sans text-[16px] sm:text-[18px] text-[#111111]/80 leading-relaxed">
-                {project.overview}
-              </p>
-            </div>
-
-            {/* Challenge & Solution */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              <div className="bg-white p-8 rounded-3xl shadow-sm">
-                <span className="w-8 h-8 rounded-full bg-[#FF6B35]/20 text-[#FF6B35] flex items-center justify-center font-bold text-sm mb-4">
-                  !
-                </span>
-                <h3 className="font-display font-medium text-[20px] sm:text-[22px] text-[#111111] mb-3">
-                  The Challenge
-                </h3>
-                <p className="font-sans text-[15px] sm:text-[16px] text-[#111111]/75 leading-relaxed">
-                  {project.challenge}
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-3xl shadow-sm">
-                <span className="w-8 h-8 rounded-full bg-accent-green/30 text-accent-forest flex items-center justify-center font-bold text-sm mb-4">
-                  ✓
-                </span>
-                <h3 className="font-display font-medium text-[20px] sm:text-[22px] text-[#111111] mb-3">
-                  The PSTUDIO Approach
-                </h3>
-                <p className="font-sans text-[15px] sm:text-[16px] text-[#111111]/75 leading-relaxed">
-                  {project.solution}
-                </p>
-              </div>
-            </div>
-
-            {/* Project CTA Bar */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-studio-dark text-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xl">
-              <div className="max-w-xl">
-                <h3 className="font-display font-medium text-[24px] sm:text-[28px] text-white leading-tight mb-2">
-                  Need a video like this for your product?
-                </h3>
-                <p className="font-sans text-[15px] text-white/70">
-                  We turn complex technical capabilities into clear, high-converting video stories.
-                </p>
-              </div>
-
-              <TicketButton onClick={openContactModal} variant="accent" size="lg">
-                Talk about your video
-              </TicketButton>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ========================================================================= */}
-      {/* 5. PREVIOUS / NEXT PROJECT NAVIGATION (Seamless)                          */}
+      {/* 4. PREVIOUS / NEXT PROJECT NAVIGATION (Seamless)                          */}
       {/* ========================================================================= */}
       <section className="w-full px-[24px] py-14 sm:py-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
