@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useContactModal } from '@/context/ContactModalContext'
-import TicketButton from './ui/TicketButton'
+import TicketButton from '@/components/ui/TicketButton'
 
 // Animated Hand-drawn Underline from /image/2 underline.svg beneath CTA heading
 function BrushUnderline() {

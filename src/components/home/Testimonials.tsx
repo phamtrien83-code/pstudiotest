@@ -81,14 +81,14 @@ export default function Testimonials() {
     <section className="relative w-full bg-[#FFFFFF] py-16 sm:py-20 lg:py-24 px-[24px] border-t border-black/5 z-20">
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] items-start">
         
-        {/* Left Column: Heading + CTA Button (Columns 1 to 3 in 12-col grid) */}
-        <div className="lg:col-span-3 lg:col-start-1 flex flex-col items-start justify-start">
+        {/* Left Column: Heading + CTA Button (Columns 1 to 4 in 12-col grid) */}
+        <div className="lg:col-span-4 lg:col-start-1 flex flex-col items-start justify-start">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-medium text-[34px] sm:text-[40px] lg:text-[42px] xl:text-[48px] leading-[1.08] tracking-[-0.035em] text-studio-dark mb-8"
+            className="font-display font-medium text-[38px] sm:text-[46px] lg:text-[50px] xl:text-[56px] 2xl:text-[62px] leading-[1.06] tracking-[-0.035em] text-studio-dark mb-8 sm:mb-10"
           >
             We&apos;re honored<br />to work with
           </motion.h2>
@@ -101,7 +101,7 @@ export default function Testimonials() {
           >
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center px-7 py-3.5 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[16px] rounded-lg shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center px-8 py-4 sm:px-9 sm:py-4 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[17px] sm:text-[18px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
             >
               Let&apos;s work
             </Link>
@@ -134,15 +134,15 @@ export default function Testimonials() {
             ))}
           </motion.div>
 
-          {/* Bottom Caption: Metrics & Credentials (Right aligned) */}
+          {/* Bottom Caption: Metrics & Credentials (Centered relative to the brand logos) */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="font-sans text-[13px] sm:text-[14px] text-gray-500 font-normal tracking-[-0.01em] mt-12 lg:mt-16 text-left lg:text-right max-w-[524px] lg:self-end leading-relaxed"
+            className="font-sans text-[14px] sm:text-[15px] lg:text-[16px] text-gray-500 font-normal tracking-[-0.01em] mt-10 sm:mt-12 lg:mt-16 text-center mx-auto self-center lg:whitespace-nowrap text-balance max-w-xl lg:max-w-none leading-relaxed"
           >
-            200+ explainer videos shipped · 4+ years focused on B2B SaaS &amp; Tech · Clients across the US, EU, and Asia
+            200+ explainer videos shipped · 4+ years focused on B2B SaaS &amp; Tech · Clients across the US, EU, and&nbsp;Asia
           </motion.p>
         </div>
 

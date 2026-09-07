@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/common/Navbar'
 import AboutHello from '@/components/about/AboutHello'
 import AboutStory from '@/components/about/AboutStory'
+import AboutCoreValueVideo from '@/components/about/AboutCoreValueVideo'
 import AboutQuoteSection from '@/components/about/AboutQuoteSection'
 import MeetTheTeam from '@/components/about/MeetTheTeam'
-import CalloutFooter from '@/components/CalloutFooter'
+import CalloutFooter from '@/components/common/CalloutFooter'
 
 export const metadata: Metadata = {
   title: 'About Us | PSTUDIO',
@@ -25,6 +26,7 @@ export default function AboutPage() {
       <Navbar />
       <AboutHello />
       <AboutStory />
+      <AboutCoreValueVideo />
       <AboutQuoteSection />
       <MeetTheTeam />
       <CalloutFooter />

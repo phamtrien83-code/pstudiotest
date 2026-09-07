@@ -71,11 +71,13 @@ function GreenQuestionMark() {
 }
 
 export default function FAQ() {
-  // Allow toggling open items (first item open by default)
-  const [openId, setOpenId] = useState<string | null>('faq-1')
+  // Allow multiple FAQ items to be open simultaneously (first item open by default)
+  const [openIds, setOpenIds] = useState<string[]>(['faq-1'])
 
   const toggleFAQ = (id: string) => {
-    setOpenId((prev) => (prev === id ? null : id))
+    setOpenIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    )
   }
 
   return (
@@ -100,7 +102,7 @@ export default function FAQ() {
         {/* Right Column: 7 FAQ Accordions (Columns 6 to 12) */}
         <div className="lg:col-span-7 lg:col-start-6 flex flex-col divide-y divide-black/10 border-t border-b border-black/10 w-full mt-10 lg:mt-0">
           {FAQ_ITEMS.map((item, index) => {
-            const isOpen = openId === item.id
+            const isOpen = openIds.includes(item.id)
 
             return (
               <motion.div

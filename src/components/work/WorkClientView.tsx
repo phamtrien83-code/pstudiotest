@@ -4,8 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Project, ANIMATION_STYLES } from '@/data/projects'
-import Navbar from '@/components/Navbar'
-import CalloutFooter from '@/components/CalloutFooter'
+import Navbar from '@/components/common/Navbar'
+import CalloutFooter from '@/components/common/CalloutFooter'
 
 interface WorkClientViewProps {
   projects: Project[]
@@ -45,13 +45,13 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
           />
         </motion.div>
 
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center">
+        <div className="relative z-10 max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto flex flex-col items-center text-center">
           {/* Main Display Headline with Stylized SVG Underline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-medium text-[38px] sm:text-[54px] md:text-[68px] lg:text-[76px] leading-[1.06] tracking-[-0.035em] text-studio-dark max-w-4xl"
+            className="font-display font-medium text-[38px] sm:text-[54px] md:text-[68px] lg:text-[76px] 2xl:text-[92px] 3xl:text-[108px] leading-[1.06] tracking-[-0.035em] text-studio-dark max-w-4xl 2xl:max-w-6xl"
           >
             Work that clarifies the complex and{' '}
             <span className="relative inline-block">
@@ -78,7 +78,7 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 sm:mt-12 md:mt-14 text-[17px] sm:text-[20px] text-studio-gray font-sans max-w-2xl leading-relaxed"
+            className="mt-10 sm:mt-12 md:mt-14 text-[17px] sm:text-[20px] 2xl:text-[24px] 3xl:text-[28px] text-studio-gray font-sans max-w-2xl 2xl:max-w-4xl 3xl:max-w-5xl leading-relaxed"
           >
             Explore animated explainer videos, product demos, and brand stories built
             for SaaS, Tech, Healthcare, and Industrial pioneers worldwide.
@@ -88,13 +88,14 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
 
       {/* ========================================================================= */}
       {/* PROJECTS GRID (Personaal Studio /recent Editorial 4-Column Layout)         */}
+      {/* Strict 12-Column Grid Alignment matching Figma Grid (4 cards x 3 cols)     */}
       {/* ========================================================================= */}
-      <section className="w-full px-[24px] py-12 sm:py-16">
-        <div className="w-full max-w-[1720px] mx-auto">
+      <section className="w-full px-[24px] py-12 sm:py-16 2xl:py-24">
+        <div className="w-full">
           <AnimatePresence mode="popLayout">
             <motion.div
               layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-14 sm:gap-y-18 lg:gap-y-20"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-[24px] gap-y-14 sm:gap-y-18 lg:gap-y-20 2xl:gap-y-24"
             >
               {projects.map((project, index) => {
                 const isHovered = hoveredSlug === project.slug
@@ -110,12 +111,12 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                     transition={{ duration: 0.45, delay: index * 0.025 }}
                     onMouseEnter={() => setHoveredSlug(project.slug)}
                     onMouseLeave={() => setHoveredSlug(null)}
-                    className={`group relative flex flex-col transition-all duration-500 ease-out will-change-transform ${
+                    className={`col-span-1 sm:col-span-1 lg:col-span-3 group relative flex flex-col transition-all duration-500 ease-out will-change-transform ${
                       isAnotherHovered
-                        ? 'opacity-65 blur-[1px] scale-[0.99]'
+                        ? 'opacity-50 scale-[0.99]'
                         : isHovered
-                        ? 'opacity-100 blur-0 scale-[1.01]'
-                        : 'opacity-100 blur-0 scale-100'
+                        ? 'opacity-100 scale-[1.01]'
+                        : 'opacity-100 scale-100'
                     }`}
                   >
                   <Link
@@ -133,23 +134,23 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                         loading="lazy"
                       />
 
-                      {/* Rich Dark Dim Overlay when another project is hovered */}
+                      {/* Strong Dark Dim Overlay when another project is hovered (No Blur) */}
                       <div
-                        className={`absolute inset-0 bg-black/40 transition-opacity duration-500 pointer-events-none ${
+                        className={`absolute inset-0 bg-black/60 transition-opacity duration-500 pointer-events-none ${
                           isAnotherHovered ? 'opacity-100' : 'opacity-0'
                         }`}
                       />
 
                         {/* Minimalist Floating Client Pill */}
                         <div className="absolute top-3.5 left-3.5 pointer-events-none">
-                          <span className="px-3 py-1 rounded-full text-[11px] font-sans font-medium uppercase tracking-wider bg-black/50 backdrop-blur-md text-white">
+                          <span className="px-3 py-1 rounded-full text-[11px] 2xl:text-[13px] font-sans font-medium uppercase tracking-wider bg-black/50 backdrop-blur-md text-white">
                             {project.client}
                           </span>
                         </div>
 
                         {/* Video Type Tag on bottom-right */}
                         <div className="absolute bottom-3.5 right-3.5 pointer-events-none">
-                          <span className="px-2.5 py-1 rounded-lg text-[11px] font-sans font-medium bg-white/90 backdrop-blur-md text-studio-dark shadow-sm">
+                          <span className="px-2.5 py-1 rounded-lg text-[11px] 2xl:text-[13px] font-sans font-medium bg-white/90 backdrop-blur-md text-studio-dark shadow-sm">
                             {project.videoType}
                           </span>
                         </div>
@@ -157,10 +158,10 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
 
                       {/* Metadata Directly Below Image (Personaal Studio Style) */}
                       <div className="mt-4 flex flex-col gap-1">
-                        <h2 className="font-display font-medium text-[20px] sm:text-[22px] text-studio-dark group-hover:text-black leading-snug tracking-[-0.015em] line-clamp-1">
+                        <h2 className="font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] 3xl:text-[30px] text-studio-dark group-hover:text-black leading-snug tracking-[-0.015em] line-clamp-1">
                           {project.title}
                         </h2>
-                        <p className="font-sans text-[14px] text-studio-gray font-normal leading-normal">
+                        <p className="font-sans text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-studio-gray font-normal leading-normal">
                           {project.category} &bull; {project.year}
                         </p>
                       </div>
@@ -174,33 +175,35 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
       </section>
 
       {/* ========================================================================= */}
-      {/* ANIMATION STYLES SHOWCASE SECTION                                         */}
+      {/* ANIMATION STYLES SHOWCASE SECTION (12-Column Grid Alignment)               */}
       {/* ========================================================================= */}
-      <section className="w-full bg-[#111111] text-white py-20 px-[24px] relative overflow-hidden">
+      <section className="w-full bg-[#111111] text-white py-20 2xl:py-28 px-[24px] relative overflow-hidden">
         {/* Subtle decorative glow in dark mode */}
         <div
-          className="absolute -top-[20%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none opacity-20 blur-[100px]"
+          className="absolute -top-[20%] right-[10%] w-[500px] h-[500px] 2xl:w-[700px] 2xl:h-[700px] rounded-full pointer-events-none opacity-20 blur-[100px]"
           style={{ background: '#20D38E' }}
         />
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-            <div>
-              <h2 className="font-display font-medium text-[32px] sm:text-[44px] md:text-[52px] leading-tight tracking-tight text-white">
+        <div className="w-full relative z-10">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] mb-12 sm:mb-16 2xl:mb-20 items-end">
+            <div className="lg:col-span-7">
+              <h2 className="font-display font-medium text-[32px] sm:text-[44px] md:text-[52px] 2xl:text-[64px] 3xl:text-[76px] leading-tight tracking-tight text-white">
                 Animation Styles We Master
               </h2>
             </div>
-            <p className="font-sans text-[16px] text-white/60 max-w-md leading-relaxed">
-              Every business challenge requires a distinct visual treatment. We match
-              your brand with the ideal aesthetic.
-            </p>
+            <div className="lg:col-span-5">
+              <p className="font-sans text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white/60 leading-relaxed">
+                Every business challenge requires a distinct visual treatment. We match
+                your brand with the ideal aesthetic.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[24px]">
             {ANIMATION_STYLES.map((style) => (
               <div
                 key={style.id}
-                className="group relative bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden p-6 hover:border-accent-green/40 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between"
+                className="lg:col-span-4 group relative bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden p-6 2xl:p-8 hover:border-accent-green/40 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden mb-5 bg-black/30">
                   <img
@@ -213,13 +216,13 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                 </div>
 
                 <div>
-                  <h3 className="font-display font-medium text-[20px] sm:text-[22px] text-white mb-1.5 group-hover:text-accent-green transition-colors">
+                  <h3 className="font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] text-white mb-1.5 group-hover:text-accent-green transition-colors">
                     {style.name}
                   </h3>
-                  <p className="font-sans text-[13px] font-semibold text-white/50 uppercase tracking-wider mb-3">
+                  <p className="font-sans text-[13px] 2xl:text-[15px] font-semibold text-white/50 uppercase tracking-wider mb-3">
                     {style.tagline}
                   </p>
-                  <p className="font-sans text-[14px] text-white/70 leading-relaxed">
+                  <p className="font-sans text-[14px] 2xl:text-[16px] text-white/70 leading-relaxed">
                     {style.description}
                   </p>
                 </div>

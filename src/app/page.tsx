@@ -1,11 +1,11 @@
-import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import QuoteSection from '@/components/QuoteSection'
-import Testimonials from '@/components/Testimonials'
-import Process from '@/components/Process'
-import SelectedWork from '@/components/SelectedWork'
-import FAQ from '@/components/FAQ'
-import CalloutFooter from '@/components/CalloutFooter'
+import Navbar from '@/components/common/Navbar'
+import Hero from '@/components/home/Hero'
+import QuoteSection from '@/components/home/QuoteSection'
+import Testimonials from '@/components/home/Testimonials'
+import Process from '@/components/home/Process'
+import SelectedWork from '@/components/home/SelectedWork'
+import FAQ from '@/components/home/FAQ'
+import CalloutFooter from '@/components/common/CalloutFooter'
 
 export default function Home() {
   return (

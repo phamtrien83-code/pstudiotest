@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getAllProjects } from '@/data/projects'
-import WorkClientView from './WorkClientView'
+import WorkClientView from '@/components/work/WorkClientView'
 
 export const metadata: Metadata = {
   title: 'Our Work — Explainer Video Portfolio | PSTUDIO',

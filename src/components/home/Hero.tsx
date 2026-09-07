@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import TicketButton from './ui/TicketButton'
+import TicketButton from '@/components/ui/TicketButton'
 
 export default function Hero() {
   return (

@@ -145,13 +145,13 @@ export default function AboutQuoteSection() {
 
   return (
     <section className="relative w-full bg-background selection:bg-accent-green selection:text-black">
-      
+
       {/* ========================================================================= */}
       {/* DESKTOP PINNED 2-PHASE QUOTE SEQUENCE (Sticky Viewport)                   */}
       {/* ========================================================================= */}
       <div ref={containerRef} className="hidden md:block relative w-full h-[280vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-          
+
           {/* Phase 1 Images (Multi-Layer Depth) */}
           {/* Layer 1: Behind text (z-10) */}
           <FloatingImageCard
@@ -288,7 +288,7 @@ export default function AboutQuoteSection() {
       {/* MOBILE RESPONSIVE STACKED VIEW                                            */}
       {/* ========================================================================= */}
       <div className="md:hidden w-full px-6 py-16 flex flex-col gap-20">
-        
+
         {/* Mobile Section 1: "We didn't start as a strategy studio" */}
         <div className="flex flex-col items-center text-center">
           <h2 className="font-display font-medium text-[36px] sm:text-[42px] leading-[1.1] text-[#111111] mb-8">

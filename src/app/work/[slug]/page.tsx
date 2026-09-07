@@ -5,7 +5,7 @@ import {
   getProjectBySlug,
   getAdjacentProjects,
 } from '@/data/projects'
-import ProjectClientView from './ProjectClientView'
+import ProjectClientView from '@/components/work/ProjectClientView'
 
 interface ProjectPageProps {
   params: {

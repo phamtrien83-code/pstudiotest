@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import CalloutFooter from '@/components/CalloutFooter'
-import BlogClientView from './BlogClientView'
+import Navbar from '@/components/common/Navbar'
+import CalloutFooter from '@/components/common/CalloutFooter'
+import BlogClientView from '@/components/blog/BlogClientView'
 import { BLOG_POSTS } from '@/data/blogPosts'
 
 export const metadata: Metadata = {

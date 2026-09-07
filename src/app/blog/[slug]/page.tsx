@@ -2,10 +2,10 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import CalloutFooter from '@/components/CalloutFooter'
+import Navbar from '@/components/common/Navbar'
+import CalloutFooter from '@/components/common/CalloutFooter'
 import { BLOG_POSTS, BlogPost } from '@/data/blogPosts'
-import BlogPostClientArticle from './BlogPostClientArticle'
+import BlogPostClientArticle from '@/components/blog/BlogPostClientArticle'
 
 interface BlogPostPageProps {
   params: {

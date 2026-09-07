@@ -62,10 +62,13 @@ export default function AboutHello() {
     setActiveIndex((prev) => (prev + 1) % GREETINGS.length)
   }, [])
 
+  // Auto-cycle greeting every 4s, resetting the countdown whenever activeIndex changes (e.g. user click)
   useEffect(() => {
-    const interval = setInterval(handleNext, 4000)
-    return () => clearInterval(interval)
-  }, [handleNext])
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % GREETINGS.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [activeIndex])
 
   const currentGreeting = GREETINGS[activeIndex]
 

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 import { useContactModal } from '@/context/ContactModalContext'
-import TicketButton from './ui/TicketButton'
+import TicketButton from '@/components/ui/TicketButton'
 import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const navLinks = [
