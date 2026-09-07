@@ -118,13 +118,17 @@ function StarBullet() {
   )
 }
 
-export default function CalloutFooter() {
+interface CalloutFooterProps {
+  className?: string
+}
+
+export default function CalloutFooter({ className = '' }: CalloutFooterProps) {
   const { openContactModal } = useContactModal()
 
   return (
-    <footer className="relative w-full bg-[#FFFFFF] pt-20 sm:pt-28 lg:pt-36 flex flex-col z-20 overflow-hidden">
+    <footer className={`relative w-full pt-20 sm:pt-28 lg:pt-36 flex flex-col z-20 overflow-hidden ${className}`}>
       
-      {/* 1. TOP CALL TO ACTION SECTION (White Background) */}
+      {/* 1. TOP CALL TO ACTION SECTION */}
       <div className="w-full max-w-[1200px] mx-auto px-[24px] flex flex-col items-center text-center pb-20 sm:pb-28 lg:pb-32">
         
         <motion.h2

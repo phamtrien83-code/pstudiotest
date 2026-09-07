@@ -44,7 +44,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-medium text-[42px] sm:text-[58px] lg:text-[76px] xl:text-[84px] leading-[1.02] tracking-[-0.035em] text-[#111111] mb-6"
+              className="font-sans font-semibold text-[42px] sm:text-[58px] lg:text-[76px] xl:text-[84px] leading-[1.02] tracking-[-0.035em] text-[#111111] mb-6"
             >
               Insights &amp; Perspectives
             </motion.h1>
@@ -75,11 +75,11 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
               className="group w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] bg-white p-6 sm:p-8 lg:p-8 xl:p-10 rounded-2xl sm:rounded-3xl border border-transparent hover:border-accent-green transition-all duration-300 items-center shadow-sm"
             >
               {/* Featured Cover Artwork (Columns 1-7) */}
-              <div className="lg:col-span-7 w-full aspect-[16/10] bg-gray-100 overflow-hidden relative rounded-xl sm:rounded-2xl">
+              <div className="lg:col-span-7 w-full aspect-[1200/630] bg-gray-100 overflow-hidden relative rounded-xl sm:rounded-2xl">
                 <img
                   src={featuredPost.coverImage}
                   alt={featuredPost.coverImageAlt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-contain"
                 />
                 <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-xl text-xs font-semibold uppercase tracking-wider text-[#111111] border border-black/5 shadow-sm">
                   Featured
@@ -99,7 +99,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                     <span>{featuredPost.date}</span>
                   </div>
 
-                  <h2 className="font-display font-medium text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.12] tracking-[-0.03em] text-[#111111] group-hover:text-black transition-colors mb-4">
+                  <h2 className="font-sans font-semibold text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.12] tracking-[-0.03em] text-[#111111] group-hover:text-black transition-colors mb-4">
                     {featuredPost.title}
                   </h2>
 
@@ -180,7 +180,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
       <section className="w-full px-[24px]">
         {filteredPosts.length === 0 ? (
           <div className="w-full py-20 flex flex-col items-center justify-center text-center">
-            <h3 className="font-display font-medium text-2xl text-[#111111] mb-2">
+            <h3 className="font-sans font-semibold text-2xl text-[#111111] mb-2">
               No articles found
             </h3>
             <p className="text-[#111111]/60 max-w-md mb-6 font-sans">
@@ -212,11 +212,11 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                   <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
                     
                     {/* Card Cover Image */}
-                    <div className="w-full aspect-[16/10] bg-gray-100 overflow-hidden relative">
+                    <div className="w-full aspect-[1200/630] bg-gray-100 overflow-hidden relative">
                       <img
                         src={post.coverImage}
                         alt={post.coverImageAlt}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-contain"
                       />
                       <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-xl text-xs font-semibold text-[#111111] border border-black/5">
                         {post.readTime}
@@ -234,7 +234,7 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
                           <span>{post.date}</span>
                         </div>
 
-                        <h3 className="font-display font-medium text-[22px] sm:text-[24px] leading-snug tracking-[-0.025em] text-[#111111] group-hover:text-black transition-colors mb-3">
+                        <h3 className="font-sans font-semibold text-[22px] sm:text-[24px] leading-snug tracking-[-0.025em] text-[#111111] group-hover:text-black transition-colors mb-3">
                           {post.title}
                         </h3>
 

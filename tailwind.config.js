@@ -21,6 +21,15 @@ module.exports = {
         sans: ['var(--font-archivo)', 'Archivo', 'sans-serif'],
         body: ['var(--font-archivo)', 'Archivo', 'sans-serif'],
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 65s linear infinite',
+      },
     },
   },
   plugins: [],

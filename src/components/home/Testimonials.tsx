@@ -4,14 +4,14 @@ import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-interface BrandLogo {
+export interface BrandLogo {
   name: string
   src: string
   alt: string
   className?: string
 }
 
-const BRAND_LOGOS: BrandLogo[] = [
+export const BRAND_LOGOS: BrandLogo[] = [
   // Row 1
   {
     name: 'Sisense',
@@ -27,7 +27,7 @@ const BRAND_LOGOS: BrandLogo[] = [
   },
   {
     name: 'Meta',
-    src: '/image/testimonials/Meta_lockup_positive primary_RGB.svg',
+    src: '/image/testimonials/meta-logo.svg',
     alt: 'Meta Logo',
     className: 'h-5 sm:h-5.5 md:h-6 max-w-[100px]',
   },

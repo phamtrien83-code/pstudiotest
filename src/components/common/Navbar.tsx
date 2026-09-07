@@ -15,7 +15,12 @@ const navLinks = [
   { name: 'Blog', href: '/blog' },
 ]
 
-export default function Navbar() {
+interface NavbarProps {
+  theme?: 'light' | 'dark'
+}
+
+export default function Navbar({ theme = 'light' }: NavbarProps) {
+  const isDark = theme === 'dark'
   const pathname = usePathname()
   const { openContactModal } = useContactModal()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -65,16 +70,18 @@ export default function Navbar() {
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : '-100%' }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 w-full px-[24px] py-4 sm:py-5 z-50 transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-full px-[24px] py-4 sm:py-5 z-50 transition-colors duration-500 ${
           isScrolled
-            ? 'bg-white/85 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.04)] border-b border-black/5'
+            ? isDark
+              ? 'bg-[#111111]/85 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.4)] border-b border-white/10'
+              : 'bg-white/85 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.04)] border-b border-black/5'
             : 'bg-transparent'
         }`}
       >
         <div className="w-full grid grid-cols-12 gap-[24px] items-center">
           {/* Brand Logo - Starts at Column 1 */}
           <div className="col-span-6 md:col-span-4 flex items-center">
-            <Logo />
+            <Logo textColor={isDark ? 'text-white' : 'text-black'} />
           </div>
 
           {/* Desktop Navigation Links - Centered with elegant tighter spacing */}
@@ -85,9 +92,13 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-base lg:text-[17px] font-medium transition-colors relative py-1 inline-block ${
+                  className={`text-base lg:text-[17px] font-medium transition-colors duration-300 relative py-1 inline-block ${
                     isActive
-                      ? 'text-black after:w-full font-semibold'
+                      ? isDark
+                        ? 'text-white after:w-full font-semibold'
+                        : 'text-black after:w-full font-semibold'
+                      : isDark
+                      ? 'text-white/70 hover:text-white after:w-0 hover:after:w-full'
                       : 'text-studio-dark hover:text-black after:w-0 hover:after:w-full'
                   } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-accent-green after:transition-all`}
                 >
@@ -112,7 +123,9 @@ export default function Navbar() {
           <div className="col-span-6 flex justify-end md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-studio-dark hover:bg-black/5 focus:outline-none"
+              className={`p-2 rounded-lg transition-colors focus:outline-none ${
+                isDark ? 'text-white hover:bg-white/10' : 'text-studio-dark hover:bg-black/5'
+              }`}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -132,7 +145,11 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-[24px] right-[24px] mt-2 p-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-black/5 flex flex-col gap-4 md:hidden z-50"
+              className={`absolute top-full left-[24px] right-[24px] mt-2 p-6 rounded-2xl shadow-xl border flex flex-col gap-4 md:hidden z-50 transition-colors ${
+                isDark
+                  ? 'bg-[#181818]/95 backdrop-blur-xl border-white/10 text-white'
+                  : 'bg-white/95 backdrop-blur-md border-black/5 text-studio-dark'
+              }`}
             >
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
@@ -141,8 +158,14 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors py-2 border-b border-black/5 ${
-                      isActive ? 'text-accent-green font-semibold' : 'text-studio-dark hover:text-accent-green'
+                    className={`text-lg font-medium transition-colors py-2 border-b ${
+                      isDark ? 'border-white/10' : 'border-black/5'
+                    } ${
+                      isActive
+                        ? 'text-accent-green font-semibold'
+                        : isDark
+                        ? 'text-white hover:text-accent-green'
+                        : 'text-studio-dark hover:text-accent-green'
                     }`}
                   >
                     {link.name}

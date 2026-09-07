@@ -89,7 +89,7 @@ export default function BlogPostClientArticle({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-medium text-[36px] sm:text-[50px] lg:text-[62px] xl:text-[68px] leading-[1.06] tracking-[-0.035em] text-[#111111]"
+              className="font-sans font-semibold text-[36px] sm:text-[50px] lg:text-[62px] xl:text-[68px] leading-[1.06] tracking-[-0.035em] text-[#111111]"
             >
               {post.title}
             </motion.h1>
@@ -102,11 +102,11 @@ export default function BlogPostClientArticle({
       <div className="w-full px-[24px] mb-16 sm:mb-20">
         <div className="w-full grid grid-cols-12 gap-[24px]">
           <div className="col-span-12">
-            <div className="w-full aspect-[21/9] sm:aspect-[2.4/1] bg-gray-100 overflow-hidden border border-black/10 rounded-2xl sm:rounded-3xl">
+            <div className="w-full aspect-[1200/630] bg-gray-100 overflow-hidden border border-black/10 rounded-2xl sm:rounded-3xl">
               <img
                 src={post.coverImage}
                 alt={post.coverImageAlt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function BlogPostClientArticle({
               id={sec.id}
               className="scroll-mt-28 flex flex-col space-y-6"
             >
-              <h2 className="font-display font-medium text-[26px] sm:text-[32px] lg:text-[36px] leading-tight tracking-[-0.03em] text-[#111111] pt-2">
+              <h2 className="font-sans font-semibold text-[26px] sm:text-[32px] lg:text-[36px] leading-tight tracking-[-0.03em] text-[#111111] pt-2">
                 {sec.heading}
               </h2>
 
@@ -240,7 +240,7 @@ export default function BlogPostClientArticle({
               {/* Custom Quote Callout */}
               {sec.quote && (
                 <div className="my-6 p-6 sm:p-8 bg-black/[0.02] border-l-4 border-[#20D38E] rounded-r-2xl">
-                  <p className="font-display italic text-[18px] sm:text-[22px] leading-relaxed text-[#111111] mb-2">
+                  <p className="font-sans italic text-[18px] sm:text-[22px] leading-relaxed text-[#111111] mb-2">
                     &ldquo;{sec.quote}&rdquo;
                   </p>
                   <span className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
@@ -252,7 +252,7 @@ export default function BlogPostClientArticle({
               {/* Key Takeaways Box */}
               {sec.keyTakeaways && sec.keyTakeaways.length > 0 && (
                 <div className="my-6 p-6 sm:p-8 bg-[#20D38E]/10 border border-[#20D38E]/30 rounded-2xl shadow-sm">
-                  <h4 className="font-display font-semibold text-base sm:text-lg text-[#0D382A] mb-4 flex items-center gap-2">
+                  <h4 className="font-sans font-semibold text-base sm:text-lg text-[#0D382A] mb-4 flex items-center gap-2">
                     <span>💡</span>
                     <span>Key Strategic Takeaways</span>
                   </h4>
@@ -281,7 +281,7 @@ export default function BlogPostClientArticle({
               <span className="text-xs font-bold uppercase tracking-wider text-[#111111]/40 mb-2">
                 Keep Reading
               </span>
-              <h3 className="font-display font-medium text-[32px] sm:text-[40px] tracking-[-0.035em] text-[#111111]">
+              <h3 className="font-sans font-semibold text-[32px] sm:text-[40px] tracking-[-0.035em] text-[#111111]">
                 Related Strategic Insights
               </h3>
             </div>
@@ -294,11 +294,11 @@ export default function BlogPostClientArticle({
                 href={`/blog/${relPost.slug}`}
                 className="col-span-1 md:col-span-1 lg:col-span-6 group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
               >
-                <div className="w-full aspect-[16/9] bg-gray-100 overflow-hidden relative rounded-t-2xl sm:rounded-t-3xl">
+                <div className="w-full aspect-[1200/630] bg-gray-100 overflow-hidden relative rounded-t-2xl sm:rounded-t-3xl">
                   <img
                     src={relPost.coverImage}
                     alt={relPost.coverImageAlt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-xl text-xs font-semibold text-[#111111] border border-black/5">
                     {relPost.readTime}
@@ -310,7 +310,7 @@ export default function BlogPostClientArticle({
                     <span className="px-2.5 py-0.5 bg-black/5 text-[#111111] rounded-xl font-semibold text-xs mb-3 inline-block">
                       {relPost.category}
                     </span>
-                    <h4 className="font-display font-medium text-xl sm:text-2xl leading-snug tracking-[-0.025em] text-[#111111] group-hover:text-black transition-colors mb-2">
+                    <h4 className="font-sans font-semibold text-xl sm:text-2xl leading-snug tracking-[-0.025em] text-[#111111] group-hover:text-black transition-colors mb-2">
                       {relPost.title}
                     </h4>
                     <p className="font-sans text-sm text-[#111111]/70 line-clamp-2 leading-relaxed">

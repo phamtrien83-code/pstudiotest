@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Project, ANIMATION_STYLES } from '@/data/projects'
 import Navbar from '@/components/common/Navbar'
 import CalloutFooter from '@/components/common/CalloutFooter'
+import { BRAND_LOGOS } from '@/components/home/Testimonials'
 
 interface WorkClientViewProps {
   projects: Project[]
@@ -13,23 +14,49 @@ interface WorkClientViewProps {
 
 export default function WorkClientView({ projects }: WorkClientViewProps) {
   const [hoveredSlug, setHoveredSlug] = React.useState<string | null>(null)
+  const [isDark, setIsDark] = React.useState(false)
+  const animationSectionRef = React.useRef<HTMLElement>(null)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (!animationSectionRef.current) return
+      const rect = animationSectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      // Dark mode is active ONLY while the center of the viewport is inside Animation Styles
+      // When leaving the section (scrolling down to footer OR scrolling up to projects),
+      // the background returns to the original light background immediately and smoothly.
+      const inView = rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5
+      setIsDark(inView)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  React.useEffect(() => {
+    document.body.style.transition = 'background-color 700ms cubic-bezier(0.45, 0, 0.55, 1)'
+    document.body.style.backgroundColor = isDark ? '#111111' : '#F9F9F9'
+
+    return () => {
+      document.body.style.backgroundColor = ''
+      document.body.style.transition = ''
+    }
+  }, [isDark])
 
   return (
-    <main className="min-h-screen bg-background text-studio-dark selection:bg-accent-green selection:text-black flex flex-col">
-      <Navbar />
+    <main
+      className={`min-h-screen selection:bg-accent-green selection:text-black flex flex-col transition-colors duration-700 ease-[cubic-bezier(0.45,0,0.55,1)] ${isDark ? 'bg-[#111111] text-white' : 'bg-background text-studio-dark'
+        }`}
+    >
+      <Navbar theme={isDark ? 'dark' : 'light'} />
 
       {/* ========================================================================= */}
       {/* SHOWCASE HERO SECTION                                                     */}
       {/* ========================================================================= */}
       <section className="relative w-full pt-16 sm:pt-20 pb-10 sm:pb-14 px-[24px] overflow-hidden">
-        {/* Subtle background glow */}
-        <div
-          className="absolute inset-0 pointer-events-none z-0"
-          style={{
-            background:
-              'radial-gradient(ellipse 65% 50% at 50% 20%, rgba(32, 211, 142, 0.08) 0%, rgba(249, 249, 249, 0) 70%)',
-          }}
-        />
+
 
         {/* Decorative rotating star */}
         <motion.div
@@ -111,35 +138,29 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                     transition={{ duration: 0.45, delay: index * 0.025 }}
                     onMouseEnter={() => setHoveredSlug(project.slug)}
                     onMouseLeave={() => setHoveredSlug(null)}
-                    className={`col-span-1 sm:col-span-1 lg:col-span-3 group relative flex flex-col transition-all duration-500 ease-out will-change-transform ${
-                      isAnotherHovered
-                        ? 'opacity-50 scale-[0.99]'
-                        : isHovered
-                        ? 'opacity-100 scale-[1.01]'
-                        : 'opacity-100 scale-100'
-                    }`}
+                    className={`col-span-1 sm:col-span-1 lg:col-span-3 relative flex flex-col transition-opacity duration-500 ease-out ${isAnotherHovered ? 'opacity-50' : 'opacity-100'
+                      }`}
                   >
-                  <Link
-                    href={`/work/${project.slug}`}
-                    data-cursor="project"
-                    data-cursor-text="View"
-                    className="flex flex-col group cursor-none"
-                  >
-                    {/* Poster Artwork Box: Aspect ~3:4 Portrait, Seamless & Borderless */}
-                    <div className="relative aspect-[3/4] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/5 cursor-none">
-                      <img
-                        src={project.thumbnail}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-center"
-                        loading="lazy"
-                      />
+                    <Link
+                      href={`/work/${project.slug}`}
+                      data-cursor="project"
+                      data-cursor-text="View"
+                      className="flex flex-col group cursor-none"
+                    >
+                      {/* Poster Artwork Box: Aspect ~3:4 Portrait, Seamless & Borderless */}
+                      <div className="relative aspect-[3/4] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/5 cursor-none">
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-center"
+                          loading="lazy"
+                        />
 
-                      {/* Strong Dark Dim Overlay when another project is hovered (No Blur) */}
-                      <div
-                        className={`absolute inset-0 bg-black/60 transition-opacity duration-500 pointer-events-none ${
-                          isAnotherHovered ? 'opacity-100' : 'opacity-0'
-                        }`}
-                      />
+                        {/* Strong Dark Dim Overlay when another project is hovered (No Blur) */}
+                        <div
+                          className={`absolute inset-0 bg-black/60 transition-opacity duration-500 pointer-events-none ${isAnotherHovered ? 'opacity-100' : 'opacity-0'
+                            }`}
+                        />
 
                         {/* Minimalist Floating Client Pill */}
                         <div className="absolute top-3.5 left-3.5 pointer-events-none">
@@ -158,10 +179,18 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
 
                       {/* Metadata Directly Below Image (Personaal Studio Style) */}
                       <div className="mt-4 flex flex-col gap-1">
-                        <h2 className="font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] 3xl:text-[30px] text-studio-dark group-hover:text-black leading-snug tracking-[-0.015em] line-clamp-1">
+                        <h2
+                          className={`font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] 3xl:text-[30px] leading-snug tracking-[-0.015em] line-clamp-1 transition-colors duration-500 ${isDark
+                            ? 'text-white group-hover:text-accent-green'
+                            : 'text-studio-dark group-hover:text-black'
+                            }`}
+                        >
                           {project.title}
                         </h2>
-                        <p className="font-sans text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-studio-gray font-normal leading-normal">
+                        <p
+                          className={`font-sans text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-normal leading-normal transition-colors duration-500 ${isDark ? 'text-white/60' : 'text-studio-gray'
+                            }`}
+                        >
                           {project.category} &bull; {project.year}
                         </p>
                       </div>
@@ -177,57 +206,123 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
       {/* ========================================================================= */}
       {/* ANIMATION STYLES SHOWCASE SECTION (12-Column Grid Alignment)               */}
       {/* ========================================================================= */}
-      <section className="w-full bg-[#111111] text-white py-20 2xl:py-28 px-[24px] relative overflow-hidden">
-        {/* Subtle decorative glow in dark mode */}
-        <div
-          className="absolute -top-[20%] right-[10%] w-[500px] h-[500px] 2xl:w-[700px] 2xl:h-[700px] rounded-full pointer-events-none opacity-20 blur-[100px]"
-          style={{ background: '#20D38E' }}
-        />
+      <section
+        ref={animationSectionRef}
+        className="w-full py-24 2xl:py-32 px-[24px] relative overflow-hidden transition-colors duration-700 ease-[cubic-bezier(0.45,0,0.55,1)]"
+      >
+
 
         <div className="w-full relative z-10">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[24px] mb-12 sm:mb-16 2xl:mb-20 items-end">
-            <div className="lg:col-span-7">
-              <h2 className="font-display font-medium text-[32px] sm:text-[44px] md:text-[52px] 2xl:text-[64px] 3xl:text-[76px] leading-tight tracking-tight text-white">
-                Animation Styles We Master
-              </h2>
-            </div>
-            <div className="lg:col-span-5">
-              <p className="font-sans text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white/60 leading-relaxed">
-                Every business challenge requires a distinct visual treatment. We match
-                your brand with the ideal aesthetic.
-              </p>
-            </div>
+          <div className="w-full max-w-3xl 2xl:max-w-4xl mx-auto flex flex-col items-center text-center mb-12 sm:mb-16 2xl:mb-20">
+            <h2
+              className={`font-display font-medium text-[36px] sm:text-[44px] md:text-[52px] lg:text-[56px] 2xl:text-[68px] leading-tight tracking-tight transition-colors duration-700 mb-4 sm:mb-5 ${isDark ? 'text-white' : 'text-studio-dark'
+                }`}
+            >
+              Animation Styles We Master
+            </h2>
+            <p
+              className={`font-sans text-[16px] sm:text-[18px] 2xl:text-[20px] max-w-2xl leading-relaxed transition-colors duration-700 ${isDark ? 'text-white/60' : 'text-studio-gray'
+                }`}
+            >
+              Every business challenge requires a distinct visual treatment. We match your brand with the ideal aesthetic.
+            </p>
           </div>
 
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[24px]">
             {ANIMATION_STYLES.map((style) => (
               <div
                 key={style.id}
-                className="lg:col-span-4 group relative bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden p-6 2xl:p-8 hover:border-accent-green/40 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between"
+                className={`lg:col-span-4 group relative rounded-2xl overflow-hidden transition-all duration-500 flex flex-col ${isDark
+                  ? 'bg-white/[0.04] hover:bg-white/[0.07]'
+                  : 'bg-black/[0.03] hover:bg-black/[0.06]'
+                  }`}
               >
-                <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden mb-5 bg-black/30">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/30">
                   <img
                     src={style.image}
                     alt={style.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
                 </div>
 
-                <div>
-                  <h3 className="font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] text-white mb-1.5 group-hover:text-accent-green transition-colors">
-                    {style.name}
-                  </h3>
-                  <p className="font-sans text-[13px] 2xl:text-[15px] font-semibold text-white/50 uppercase tracking-wider mb-3">
-                    {style.tagline}
-                  </p>
-                  <p className="font-sans text-[14px] 2xl:text-[16px] text-white/70 leading-relaxed">
-                    {style.description}
-                  </p>
+                <div className="p-6 2xl:p-8 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3
+                      className={`font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] mb-1.5 group-hover:text-accent-green transition-colors duration-500 ${isDark ? 'text-white' : 'text-studio-dark'
+                        }`}
+                    >
+                      {style.name}
+                    </h3>
+                    <p
+                      className={`font-sans text-[13px] 2xl:text-[15px] font-semibold uppercase tracking-wider mb-3 transition-colors duration-500 ${isDark ? 'text-white/50' : 'text-studio-dark/50'
+                        }`}
+                    >
+                      {style.tagline}
+                    </p>
+                    <p
+                      className={`font-sans text-[14px] 2xl:text-[16px] leading-relaxed transition-colors duration-500 ${isDark ? 'text-white/70' : 'text-studio-gray'
+                        }`}
+                    >
+                      {style.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* ========================================================================= */}
+          {/* BRAND STRIP (From Homepage)                                              */}
+          {/* ========================================================================= */}
+          <div className="w-full mt-20 sm:mt-28 2xl:mt-36 flex flex-col items-center">
+            <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] py-3">
+              <div className="flex items-center gap-14 sm:gap-20 2xl:gap-24 w-max animate-marquee hover:[animation-play-state:paused]">
+                {[...BRAND_LOGOS, ...BRAND_LOGOS, ...BRAND_LOGOS, ...BRAND_LOGOS].map((brand, idx) => (
+                  <div
+                    key={`${brand.name}-${idx}`}
+                    className="group relative flex items-center justify-center flex-shrink-0 h-10 sm:h-12"
+                  >
+                    {/* Light Mode / Base Image */}
+                    <img
+                      src={brand.src}
+                      alt={brand.alt}
+                      className={`max-w-full w-auto object-contain select-none transition-all duration-500 ${brand.className || 'h-6'
+                        } ${isDark
+                          ? 'opacity-0'
+                          : 'grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0'
+                        }`}
+                      draggable={false}
+                    />
+
+                    {/* Dark Mode Exact Accent Green (#20D38E) Mask Overlay */}
+                    <div
+                      className={`absolute inset-0 bg-accent-green transition-all duration-500 pointer-events-none ${isDark
+                          ? 'opacity-85 group-hover:opacity-100 group-hover:brightness-110'
+                          : 'opacity-0'
+                        }`}
+                      style={{
+                        WebkitMaskImage: `url("${brand.src}")`,
+                        maskImage: `url("${brand.src}")`,
+                        WebkitMaskSize: 'contain',
+                        maskSize: 'contain',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskPosition: 'center',
+                        maskPosition: 'center',
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <p
+              className={`font-sans text-[13px] sm:text-[14px] 2xl:text-[15px] font-normal tracking-[-0.01em] text-center mx-auto text-balance max-w-2xl leading-relaxed mt-10 sm:mt-12 transition-colors duration-700 ${isDark ? 'text-white/50' : 'text-studio-gray'
+                }`}
+            >
+              200+ explainer videos shipped · 4+ years focused on B2B SaaS &amp; Tech · Clients across the US, EU, and Asia
+            </p>
           </div>
         </div>
       </section>
