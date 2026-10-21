@@ -11,6 +11,7 @@ import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const navLinks = [
   { name: 'Work', href: '/work' },
+  { name: 'Playground', href: '/playground' },
   { name: 'About us', href: '/about' },
   { name: 'Blog', href: '/blog' },
 ]

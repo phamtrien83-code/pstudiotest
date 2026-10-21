@@ -292,7 +292,7 @@ export default function BlogPostClientArticle({
               <Link
                 key={relPost.slug}
                 href={`/blog/${relPost.slug}`}
-                className="col-span-1 md:col-span-1 lg:col-span-6 group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-all duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
+                className="col-span-1 md:col-span-1 lg:col-span-6 group flex flex-col bg-white overflow-hidden border border-transparent hover:border-accent-green transition-[border-color,box-shadow] duration-300 rounded-2xl sm:rounded-3xl shadow-sm"
               >
                 <div className="w-full aspect-[1200/630] bg-gray-100 overflow-hidden relative rounded-t-2xl sm:rounded-t-3xl">
                   <img

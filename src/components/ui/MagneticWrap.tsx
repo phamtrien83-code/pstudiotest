@@ -34,59 +34,75 @@ export default function MagneticWrap({
 
     let xTo: gsap.QuickToFunc | null = null
     let yTo: gsap.QuickToFunc | null = null
+    let isInside = false
 
     const initQuickTo = () => {
       xTo = gsap.quickTo(target, 'x', { duration: 0.35, ease: 'power2.out' })
       yTo = gsap.quickTo(target, 'y', { duration: 0.35, ease: 'power2.out' })
     }
 
-    const handleMouseEnter = () => {
-      initQuickTo()
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!xTo || !yTo) {
-        initQuickTo()
-      }
-
-      const rect = container.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      const rawDeltaX = (e.clientX - centerX) * strength
-      const rawDeltaY = (e.clientY - centerY) * strength
-
-      // Allow strong displacement up to 48px
-      const maxDisplacement = 48
-      const clampedX = Math.max(-maxDisplacement, Math.min(maxDisplacement, rawDeltaX))
-      const clampedY = Math.max(-maxDisplacement, Math.min(maxDisplacement, rawDeltaY))
-
-      xTo!(clampedX)
-      yTo!(clampedY)
-    }
-
-    const handleMouseLeave = () => {
-      // Clear quickTo references so subsequent enters create a fresh tween
+    const release = () => {
+      if (!isInside) return
+      isInside = false
       xTo = null
       yTo = null
 
-      // Strong elastic spring release with substantial physical oscillation
       gsap.to(target, {
         x: 0,
         y: 0,
-        duration: 1.05,
-        ease: 'elastic.out(1.25, 0.32)',
+        duration: 0.95,
+        ease: 'elastic.out(1.2, 0.35)',
         overwrite: 'auto',
       })
     }
 
-    container.addEventListener('mouseenter', handleMouseEnter)
-    container.addEventListener('mousemove', handleMouseMove)
-    container.addEventListener('mouseleave', handleMouseLeave)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!container || !target) return
+
+      const rect = container.getBoundingClientRect()
+      // Ignore if container is not in viewport or hidden
+      if (rect.width === 0 || rect.height === 0) return
+
+      const centerX = rect.left + rect.width / 2
+      const centerY = rect.top + rect.height / 2
+
+      const deltaX = e.clientX - centerX
+      const deltaY = e.clientY - centerY
+
+      // Magnetic trigger zone extends comfortably beyond the button boundary
+      const triggerWidth = rect.width / 2 + 40
+      const triggerHeight = rect.height / 2 + 40
+
+      const isWithinZone =
+        Math.abs(deltaX) <= triggerWidth && Math.abs(deltaY) <= triggerHeight
+
+      if (isWithinZone) {
+        if (!isInside || !xTo || !yTo) {
+          isInside = true
+          initQuickTo()
+        }
+
+        const maxDisplacement = 38
+        const clampedX = Math.max(-maxDisplacement, Math.min(maxDisplacement, deltaX * strength))
+        const clampedY = Math.max(-maxDisplacement, Math.min(maxDisplacement, deltaY * strength))
+
+        xTo!(clampedX)
+        yTo!(clampedY)
+      } else if (isInside) {
+        release()
+      }
+    }
+
+    const handleMouseLeaveWindow = () => {
+      release()
+    }
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    document.addEventListener('mouseleave', handleMouseLeaveWindow)
 
     return () => {
-      container.removeEventListener('mouseenter', handleMouseEnter)
-      container.removeEventListener('mousemove', handleMouseMove)
-      container.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseleave', handleMouseLeaveWindow)
       gsap.killTweensOf(target)
     }
   }, [strength])
@@ -94,7 +110,7 @@ export default function MagneticWrap({
   return (
     <div
       ref={containerRef}
-      className={`relative inline-flex items-center justify-center p-4 -m-4 ${className}`}
+      className={`relative inline-flex items-center justify-center ${className}`}
     >
       <div ref={targetRef} className="will-change-transform flex items-center justify-center">
         {children}

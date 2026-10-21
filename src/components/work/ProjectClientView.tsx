@@ -95,7 +95,7 @@ export default function ProjectClientView({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-medium text-[38px] sm:text-[52px] lg:text-[62px] xl:text-[72px] 2xl:text-[84px] 3xl:text-[96px] leading-[1.04] tracking-[-0.035em] text-[#111111]"
+              className="font-sans font-medium text-[38px] sm:text-[52px] lg:text-[62px] xl:text-[72px] 2xl:text-[84px] 3xl:text-[96px] leading-[1.04] tracking-[-0.035em] text-[#111111]"
             >
               {project.title}
             </motion.h1>
@@ -278,7 +278,7 @@ export default function ProjectClientView({
                 />
                 <span>Previous Project</span>
               </span>
-              <span className="font-display font-medium text-[18px] sm:text-[20px] 2xl:text-[24px] text-studio-dark group-hover:text-black line-clamp-1">
+              <span className="font-sans font-medium text-[18px] sm:text-[20px] 2xl:text-[24px] text-studio-dark group-hover:text-black line-clamp-1">
                 {prevProject.title}
               </span>
               <span className="text-xs 2xl:text-sm text-studio-gray font-sans mt-0.5">
@@ -303,7 +303,7 @@ export default function ProjectClientView({
                   className="transform group-hover:translate-x-0.5 transition-transform"
                 />
               </span>
-              <span className="font-display font-medium text-[18px] sm:text-[20px] 2xl:text-[24px] text-studio-dark group-hover:text-black line-clamp-1">
+              <span className="font-sans font-medium text-[18px] sm:text-[20px] 2xl:text-[24px] text-studio-dark group-hover:text-black line-clamp-1">
                 {nextProject.title}
               </span>
               <span className="text-xs 2xl:text-sm text-studio-gray font-sans mt-0.5">

@@ -43,14 +43,14 @@ function StarAccent({
 // The ribbon is drawn stroke-first along its path, in lockstep with the
 // horizontal scroll — the line's leading tip advances as each screen slides in.
 function RibbonCanvas({ progress }: { progress: MotionValue<number> }) {
-  // Synchronize ribbon stroke drawing: the leading tip emerges and starts drawing
-  // as the user scrolls near the About Story section (during approach phase 0.06 -> 0.227),
-  // then seamlessly continues across all 3 screens during the pinned horizontal journey,
-  // completing gracefully as Screen 3 settles into view.
+  // Synchronize ribbon stroke drawing:
+  // Begins at near full screen (0.17), sweeps across Screen 1 while it rests (0.17 -> 0.28 -> 0.22),
+  // flows through the Screen 2 loop (0.60 -> 0.62), and finishes fully at Screen 3 (0.92 -> 1.0).
+  // Remains fully drawn during the final 50% shorter dwell delay (0.92 -> 1.0) before scrolling down.
   const pathLength = useTransform(
     progress,
-    [0.06, 0.227, 0.96],
-    [0, 0.16, 1],
+    [0.17, 0.28, 0.60, 0.92],
+    [0, 0.22, 0.62, 1],
     { clamp: true }
   )
 
@@ -94,11 +94,14 @@ export default function AboutStory() {
     offset: ['start end', 'end end'],
   })
 
-  // Horizontal translation begins only once the section is pinned at the top (progress >= 0.227)
-  const x = useTransform(scrollYProgress, [0, 0.227, 1], ['0vw', '0vw', '-200vw'])
+  // Horizontal translation:
+  // 1. Screen 1 rests in full view while thread draws across it (0 -> 0.28)
+  // 2. Smoothly slides horizontally through Screen 2 into Screen 3 (0.28 -> 0.92)
+  // 3. Screen 3 rests centered with completed thread for a brief, crisp delay before unpinning (0.92 -> 1.0)
+  const x = useTransform(scrollYProgress, [0, 0.28, 0.92, 1], ['0vw', '0vw', '-200vw', '-200vw'])
 
   // Decorative star rotation activates in lockstep with the horizontal scroll
-  const rotateCw = useTransform(scrollYProgress, [0, 0.227, 1], [0, 0, 720])
+  const rotateCw = useTransform(scrollYProgress, [0, 0.28, 0.92, 1], [0, 0, 720, 720])
 
   return (
     <div id="about-story" className="relative w-full bg-background selection:bg-accent-green selection:text-black">
@@ -190,29 +193,37 @@ export default function AboutStory() {
             </div>
 
             {/* ================================================================= */}
-            {/* SCREEN 3: THE PHILOSOPHY HEADLINE                                 */}
+            {/* SCREEN 3 / SCREEN 4 STATEMENT: THE PHILOSOPHY HEADLINE            */}
+            {/* Exactly 2 balanced lines across all screens                        */}
             {/* ================================================================= */}
-            <div className="relative w-screen h-full flex-shrink-0 px-[24px]">
-              <div className="w-full h-full grid grid-cols-12 gap-[24px] relative items-center">
-                
-                {/* Decorative Orange Star: Left of Headline in Col 2 (Clockwise) */}
-                <div className="row-start-1 col-start-2 col-span-1 flex justify-center items-center pointer-events-none z-10">
-                  <StarAccent size={84} delay={0.2} rotate={rotateCw} />
-                </div>
-
-                {/* Big Bold Headline Statement in Col 3 to 10 */}
-                <div className="row-start-1 col-start-3 col-span-8 relative z-20 text-center flex flex-col justify-center items-center">
-                  <h2 className="font-display font-medium text-[38px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[70px] leading-[1.14] tracking-[-0.03em] text-[#111111]">
-                    The best video isn&apos;t the prettiest. It&apos;s the one your customer finally understands.
-                  </h2>
-                </div>
-
-                {/* Decorative Orange Star: Right beneath Ribbon Wave in Col 11 (Clockwise) */}
-                <div className="row-start-1 col-start-11 col-span-1 flex flex-col justify-end pb-[12vh] items-center pointer-events-none z-10">
-                  <StarAccent size={90} delay={0.4} rotate={rotateCw} />
-                </div>
-
+            {/* ================================================================= */}
+            {/* SCREEN 3 / STATEMENT: THE PHILOSOPHY HEADLINE                     */}
+            {/* Exactly 2 lines guaranteed on 1440px, Full HD, and all screens     */}
+            {/* ================================================================= */}
+            <div className="relative w-screen h-full flex-shrink-0 flex items-center justify-center px-[24px]">
+              
+              {/* Decorative Orange Star: Left (Clockwise) */}
+              <div className="absolute left-[3vw] lg:left-[5vw] top-1/2 -translate-y-1/2 pointer-events-none z-10 hidden sm:flex">
+                <StarAccent size={84} delay={0.2} rotate={rotateCw} />
               </div>
+
+              {/* Big Bold Headline Statement: Fluid Scaled, Zero Word Drop */}
+              <div className="relative z-20 w-full max-w-[92vw] 2xl:max-w-[85vw] mx-auto text-center flex flex-col justify-center items-center px-2">
+                <h2 className="font-display font-medium text-[clamp(22px,3.1vw,56px)] leading-[1.2] tracking-[-0.03em] text-[#111111] text-center select-none">
+                  <span className="block whitespace-nowrap">
+                    The best video isn&apos;t the prettiest.
+                  </span>
+                  <span className="block whitespace-nowrap mt-1.5 sm:mt-2.5">
+                    It&apos;s the one your customer finally understands.
+                  </span>
+                </h2>
+              </div>
+
+              {/* Decorative Orange Star: Right (Clockwise) */}
+              <div className="absolute right-[3vw] lg:right-[5vw] top-1/2 -translate-y-1/2 pointer-events-none z-10 hidden sm:flex">
+                <StarAccent size={90} delay={0.4} rotate={rotateCw} />
+              </div>
+
             </div>
 
           </motion.div>
@@ -262,15 +273,16 @@ export default function AboutStory() {
           </p>
         </div>
 
-        {/* Section 5: Statement */}
-        <div className="relative py-8 text-center">
+        {/* Section 5: Statement (2 Balanced Lines) */}
+        <div className="relative py-8 text-center px-2">
           <img
             src="/image/star.svg"
             alt="Star"
             className="w-10 h-10 object-contain mx-auto mb-4"
           />
-          <h2 className="font-display font-medium text-[30px] leading-[1.2] text-[#111111]">
-            The best video isn&apos;t the prettiest. It&apos;s the one your customer finally understands.
+          <h2 className="font-display font-medium text-[clamp(13px,3.7vw,22px)] leading-[1.3] tracking-[-0.025em] text-[#111111] text-center">
+            <span className="block whitespace-nowrap">The best video isn&apos;t the prettiest.</span>
+            <span className="block whitespace-nowrap mt-1">It&apos;s the one your customer finally understands.</span>
           </h2>
         </div>
 

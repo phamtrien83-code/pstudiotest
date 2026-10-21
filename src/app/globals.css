@@ -26,3 +26,15 @@ body {
   background-color: #20D38E;
   color: #111111;
 }
+
+/* Hide scrollbar across all browsers */
+.scrollbar-hide::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide,
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

@@ -180,7 +180,7 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                       {/* Metadata Directly Below Image (Personaal Studio Style) */}
                       <div className="mt-4 flex flex-col gap-1">
                         <h2
-                          className={`font-display font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] 3xl:text-[30px] leading-snug tracking-[-0.015em] line-clamp-1 transition-colors duration-500 ${isDark
+                          className={`font-sans font-medium text-[20px] sm:text-[22px] 2xl:text-[26px] 3xl:text-[30px] leading-snug tracking-[-0.015em] line-clamp-1 transition-colors duration-500 ${isDark
                             ? 'text-white group-hover:text-accent-green'
                             : 'text-studio-dark group-hover:text-black'
                             }`}
@@ -298,8 +298,8 @@ export default function WorkClientView({ projects }: WorkClientViewProps) {
                     {/* Dark Mode Exact Accent Green (#20D38E) Mask Overlay */}
                     <div
                       className={`absolute inset-0 bg-accent-green transition-all duration-500 pointer-events-none ${isDark
-                          ? 'opacity-85 group-hover:opacity-100 group-hover:brightness-110'
-                          : 'opacity-0'
+                        ? 'opacity-85 group-hover:opacity-100 group-hover:brightness-110'
+                        : 'opacity-0'
                         }`}
                       style={{
                         WebkitMaskImage: `url("${brand.src}")`,

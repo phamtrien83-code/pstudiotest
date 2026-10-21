@@ -254,7 +254,7 @@ export default function SelectedWork() {
                   className="flex flex-col items-start"
                 >
                   {/* Multi-line Big Display Title */}
-                  <h3 className="font-display font-medium text-[36px] sm:text-[46px] lg:text-[54px] xl:text-[62px] 2xl:text-[74px] 3xl:text-[88px] leading-[1.08] tracking-[-0.035em] text-[#111827] mb-4 sm:mb-5 2xl:mb-8">
+                  <h3 className="font-sans font-medium text-[36px] sm:text-[46px] lg:text-[54px] xl:text-[62px] 2xl:text-[74px] 3xl:text-[88px] leading-[1.08] tracking-[-0.035em] text-[#111827] mb-4 sm:mb-5 2xl:mb-8">
                     {currentWork.titleLines.map((line, idx) => (
                       <React.Fragment key={idx}>
                         {line}

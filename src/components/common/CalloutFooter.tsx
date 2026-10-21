@@ -184,6 +184,10 @@ export default function CalloutFooter({ className = '' }: CalloutFooterProps) {
                 <StarBullet />
                 <span>Work</span>
               </Link>
+              <Link href="/playground" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
+                <StarBullet />
+                <span>Playground</span>
+              </Link>
               <Link href="/about" className="inline-flex items-center gap-3 font-display font-medium text-[17px] sm:text-[18px] text-[#111827] hover:text-white transition-colors">
                 <StarBullet />
                 <span>About</span>
