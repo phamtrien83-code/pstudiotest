@@ -70,10 +70,10 @@ export default function Process() {
     <section 
       ref={targetRef} 
       id="process" 
-      className="relative w-full h-[580vh] bg-white z-30"
+      className="relative w-full h-[580vh] bg-accent-green z-30"
     >
       {/* Sticky Fullscreen Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-white">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-accent-green">
         
         {/* Horizontal Moving Track - 5 States (500vw total width) */}
         <motion.div 
@@ -86,11 +86,11 @@ export default function Process() {
           {/* ================================================================= */}
           <div className="w-screen h-full flex-shrink-0 flex flex-col items-center justify-center px-6 sm:px-12 lg:px-24 text-center select-none">
             <div className="max-w-[920px] mx-auto flex flex-col items-center -translate-y-4 sm:-translate-y-6">
-              <h2 className="font-display font-medium text-[44px] sm:text-[58px] md:text-[70px] lg:text-[84px] xl:text-[96px] leading-[1.06] tracking-[-0.035em] text-[#12B97C] mb-6 sm:mb-8">
+              <h2 className="font-display font-medium text-[44px] sm:text-[58px] md:text-[70px] lg:text-[84px] xl:text-[96px] leading-[1.06] tracking-[-0.035em] text-[#0A1F18] mb-6 sm:mb-8">
                 A clear process from<br className="hidden sm:inline" /> idea to final file
               </h2>
               
-              <p className="font-sans text-[17px] sm:text-[20px] lg:text-[24px] text-[#0E3B2E] font-normal leading-relaxed tracking-[-0.01em] max-w-[760px]">
+              <p className="font-sans text-[17px] sm:text-[20px] lg:text-[24px] text-[#083323] font-normal leading-relaxed tracking-[-0.01em] max-w-[760px]">
                 We keep the process simple, collaborative, and predictable — so you always know what&apos;s happening next.
               </p>
             </div>
@@ -104,10 +104,10 @@ export default function Process() {
               
               {/* Title & Description ON TOP */}
               <div className="text-center mb-4 sm:mb-6 max-w-[660px]">
-                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#12B97C] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
+                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#0A1F18] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
                   01. Discovery &amp; script
                 </h3>
-                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#0E3B2E] font-normal leading-relaxed">
+                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#083323] font-normal leading-relaxed">
                   We start with your goals, audience, and distribution plan. Then we write a script that ties your value prop to a clear call to action.
                 </p>
               </div>
@@ -134,10 +134,10 @@ export default function Process() {
               
               {/* Title & Description ON TOP */}
               <div className="text-center mb-4 sm:mb-6 max-w-[660px]">
-                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#12B97C] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
+                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#0A1F18] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
                   02. Visual direction &amp; storyboard
                 </h3>
-                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#0E3B2E] font-normal leading-relaxed">
+                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#083323] font-normal leading-relaxed">
                   We define the visual style, then map every scene to the script so your team can see the full story before we animate.
                 </p>
               </div>
@@ -164,10 +164,10 @@ export default function Process() {
               
               {/* Title & Description ON TOP */}
               <div className="text-center mb-4 sm:mb-6 max-w-[660px]">
-                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#12B97C] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
+                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#0A1F18] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
                   03. Voiceover &amp; animation
                 </h3>
-                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#0E3B2E] font-normal leading-relaxed">
+                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#083323] font-normal leading-relaxed">
                   Once the storyboard is approved, we record the voiceover and bring everything to life with custom 2D animation.
                 </p>
               </div>
@@ -194,10 +194,10 @@ export default function Process() {
               
               {/* Title & Description ON TOP */}
               <div className="text-center mb-4 sm:mb-6 max-w-[660px]">
-                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#12B97C] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
+                <h3 className="font-display font-medium text-[32px] sm:text-[38px] lg:text-[44px] text-[#0A1F18] tracking-tight leading-[1.12] mb-2 sm:mb-2.5">
                   04. Delivery &amp; variations
                 </h3>
-                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#0E3B2E] font-normal leading-relaxed">
+                <p className="font-sans text-[14px] sm:text-[16px] lg:text-[17px] text-[#083323] font-normal leading-relaxed">
                   You get ready-to-use files for your homepage, sales deck, social, and ads — plus short cutdowns if needed.
                 </p>
               </div>
