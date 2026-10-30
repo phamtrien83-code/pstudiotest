@@ -141,9 +141,11 @@ function CharSpan({
   total: number
   progress: any
 }) {
-  // Stagger reveal across [0.0 to 0.25]
-  const start = (index / total) * 0.20
-  const end = Math.min(0.25, start + 0.035)
+  // Stagger reveal across [0.11 to 0.32] (25% earlier than [0.15 to 0.37])
+  const staggerStart = 0.11
+  const staggerSpan = 0.175
+  const start = staggerStart + (index / total) * staggerSpan
+  const end = Math.min(0.32, start + 0.035)
   const opacity = useTransform(progress, [start, end], [0.15, 1])
 
   return (
@@ -244,25 +246,25 @@ export default function QuoteSection() {
   const TOTAL_CHARS = 42
 
   // Text Movements:
-  // - Phase 1 (Stagger Reveal): 0.0 -> 0.25
-  // - Phase 2 (Reading Hold): 0.25 -> 0.36
-  // - Phase 3 (Parting & Video Expansion): 0.36 -> 0.70
+  // - Phase 1 (Scroll In & Stagger Reveal): 0.11 -> 0.32
+  // - Phase 2 (Reading Hold): 0.32 -> 0.39
+  // - Phase 3 (Parting & Video Expansion): 0.39 -> 0.70
   // - Phase 4 (Fullscreen Video Viewing Dwell): 0.70 -> 1.0
-  const topTextY = useTransform(smoothProgress, [0, 0.36, 0.68, 1], [0, 0, -400, -400])
-  const topTextOpacity = useTransform(smoothProgress, [0, 0.36, 0.60, 1], [1, 1, 0, 0])
+  const topTextY = useTransform(smoothProgress, [0, 0.39, 0.68, 1], [0, 0, -400, -400])
+  const topTextOpacity = useTransform(smoothProgress, [0, 0.39, 0.62, 1], [1, 1, 0, 0])
 
-  const bottomTextY = useTransform(smoothProgress, [0, 0.36, 0.68, 1], [0, 0, 400, 400])
-  const bottomTextOpacity = useTransform(smoothProgress, [0, 0.36, 0.60, 1], [1, 1, 0, 0])
+  const bottomTextY = useTransform(smoothProgress, [0, 0.39, 0.68, 1], [0, 0, 400, 400])
+  const bottomTextOpacity = useTransform(smoothProgress, [0, 0.39, 0.62, 1], [1, 1, 0, 0])
 
-  const leftWordX = useTransform(smoothProgress, [0, 0.36, 0.68, 1], [0, 0, -550, -550])
-  const rightWordX = useTransform(smoothProgress, [0, 0.36, 0.68, 1], [0, 0, 550, 550])
-  const sideWordsOpacity = useTransform(smoothProgress, [0, 0.36, 0.60, 1], [1, 1, 0, 0])
+  const leftWordX = useTransform(smoothProgress, [0, 0.39, 0.68, 1], [0, 0, -550, -550])
+  const rightWordX = useTransform(smoothProgress, [0, 0.39, 0.68, 1], [0, 0, 550, 550])
+  const sideWordsOpacity = useTransform(smoothProgress, [0, 0.39, 0.62, 1], [1, 1, 0, 0])
 
   // Center Expanding Card - Expands to true fullscreen (100vw x 100vh) by 0.70, then stays fullscreen until 1.0
-  const cardWidth = useTransform(smoothProgress, [0, 0.36, 0.58, 0.70, 1], ['0vw', '0vw', '60vw', '100vw', '100vw'])
-  const cardHeight = useTransform(smoothProgress, [0, 0.36, 0.58, 0.70, 1], ['0vh', '0vh', '45vh', '100vh', '100vh'])
-  const cardOpacity = useTransform(smoothProgress, [0, 0.36, 0.45, 1], [0, 0, 1, 1])
-  const cardScale = useTransform(smoothProgress, [0, 0.36, 0.70, 1], [0.85, 0.85, 1.0, 1.0])
+  const cardWidth = useTransform(smoothProgress, [0, 0.39, 0.60, 0.70, 1], ['0vw', '0vw', '60vw', '100vw', '100vw'])
+  const cardHeight = useTransform(smoothProgress, [0, 0.39, 0.60, 0.70, 1], ['0vh', '0vh', '45vh', '100vh', '100vh'])
+  const cardOpacity = useTransform(smoothProgress, [0, 0.39, 0.47, 1], [0, 0, 1, 1])
+  const cardScale = useTransform(smoothProgress, [0, 0.39, 0.70, 1], [0.85, 0.85, 1.0, 1.0])
 
   // Floating Decorative Organic Stars - Burst from Center Outward & Exit before Fullscreen Video
   // Uses responsive viewport units (vw/vh) so trajectory scales proportionally on all mobile & desktop screens

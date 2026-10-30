@@ -85,19 +85,50 @@ export default function BlogClientView({ posts }: BlogClientViewProps) {
           <div className="w-full px-[24px] pb-6">
             <div className="w-full grid grid-cols-12 gap-[24px] items-center">
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex items-center justify-end">
-                <div className="inline-flex items-center p-1 bg-black/5 rounded-2xl border border-black/5 shadow-inner">
+                <div className="inline-flex items-center gap-1 p-1 bg-black/5 rounded-2xl border border-black/5 shadow-inner">
                   <button
                     onClick={() => handleViewModeChange('reel')}
-                    className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer text-[#111111]/60 hover:text-black"
+                    aria-label="Reel view"
+                    title="Reel view"
+                    className="w-9 h-9 flex items-center justify-center rounded-xl transition-all cursor-pointer text-[#111111]/60 hover:text-black"
                   >
-                    <span>Reel View</span>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="4" y="7" width="16" height="10" rx="2" />
+                      <path d="M6 3h12" />
+                      <path d="M6 21h12" />
+                    </svg>
                   </button>
 
                   <button
                     onClick={() => handleViewModeChange('grid')}
-                    className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-[#111111] text-white shadow-sm"
+                    aria-label="All articles"
+                    title="All articles"
+                    className="w-9 h-9 flex items-center justify-center rounded-xl transition-all cursor-pointer bg-[#111111] text-white shadow-sm"
                   >
-                    <span>All Articles ({posts.length})</span>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="4" y="4" width="6.5" height="6.5" rx="1.5" />
+                      <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" />
+                      <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" />
+                      <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" />
+                    </svg>
                   </button>
                 </div>
               </div>

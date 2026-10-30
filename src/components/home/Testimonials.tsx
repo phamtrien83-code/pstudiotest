@@ -101,7 +101,7 @@ export default function Testimonials() {
           >
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 sm:px-9 sm:py-4 bg-[#20D38E] text-[#0D382A] font-display font-medium text-[17px] sm:text-[18px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center px-8 py-4 sm:px-9 sm:py-4 bg-[#33E6A1] text-[#0D382A] font-display font-medium text-[17px] sm:text-[18px] rounded-xl shadow-sm hover:brightness-105 active:scale-95 transition-all duration-200"
             >
               Let&apos;s work
             </Link>

@@ -130,9 +130,10 @@ export default function AboutStory() {
               <div className="w-full h-full grid grid-cols-12 gap-[24px] relative">
                 
                 {/* Block 1: 4 years ago... (Column 2 to 5 -> col-start-2 col-span-4) */}
-                <div className="row-start-1 col-start-2 col-span-4 pt-[20vh] lg:pt-[22vh] relative z-20 w-full pointer-events-auto">
-                  <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.65] tracking-[-0.015em]">
-                    4 years ago, <span className="font-semibold text-black">PSTUDIO</span> was a small motion graphics team in Ho Chi Minh City. We loved the craft &mdash; keyframes, easing curves, and color palettes. We could make anything look beautiful.
+                <div className="row-start-1 col-start-2 col-span-4 pt-[20vh] lg:pt-[22vh] relative z-20 w-full pointer-events-auto text-center">
+                  <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.65] tracking-[-0.015em] text-pretty">
+                    4&nbsp;years ago, <span className="font-semibold text-[#12B97C]">PSTUDIO</span> was a small motion graphics team in Ho&nbsp;Chi&nbsp;Minh&nbsp;City. We loved the craft&nbsp;&mdash; keyframes, easing curves, and color palettes.
+                    <span className="block">We could make anything look&nbsp;beautiful.</span>
                   </p>
                 </div>
 
@@ -147,11 +148,11 @@ export default function AboutStory() {
                 </div>
 
                 {/* Block 2: But we kept running into the same problem... (Column 9 to 12 -> col-start-9 col-span-4) */}
-                <div className="row-start-1 col-start-9 col-span-4 pt-[44vh] lg:pt-[47vh] relative z-20 w-full pointer-events-auto">
+                <div className="row-start-1 col-start-9 col-span-4 pt-[44vh] lg:pt-[47vh] relative z-20 w-full pointer-events-auto text-center">
                   <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.65] tracking-[-0.015em] mb-4">
                     But we kept running into the same problem: we&apos;d deliver a stunning video, and the client would come back and say, <span className="italic font-medium text-black">&ldquo;It looks amazing &mdash; but it didn&apos;t move the numbers.&rdquo;</span>
                   </p>
-                  <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] font-semibold text-black leading-snug">
+                  <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] font-semibold text-[#12B97C] leading-snug">
                     That moment changed how we think about video.
                   </p>
                 </div>
@@ -172,8 +173,9 @@ export default function AboutStory() {
 
                 {/* Block 3: Inside the Green Ribbon Loop */}
                 <div className="row-start-1 col-start-1 lg:col-start-1 col-span-6 lg:col-span-5 pt-[33vh] lg:pt-[34vh] -ml-[3vw] lg:ml-[3vw] relative z-20 pointer-events-auto flex justify-center">
-                  <p className="max-w-[380px] lg:max-w-[420px] font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.6] tracking-[-0.015em]">
-                    We stopped asking <span className="font-medium text-black">&ldquo;what style do you want?&rdquo;</span> and started asking <span className="font-semibold text-black">&ldquo;what business problem are we solving?&rdquo;</span> We stopped delivering files and started delivering results.
+                  <p className="max-w-[380px] lg:max-w-[420px] text-center font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.6] tracking-[-0.015em]">
+                    We stopped asking <span className="block font-semibold text-[#12B97C]">&ldquo;what style do you want?&rdquo;</span> and started asking <span className="block font-semibold text-[#12B97C]">&ldquo;what business problem are we solving?&rdquo;</span>
+                    <span className="block">We stopped delivering files and started delivering results.</span>
                   </p>
                 </div>
 
@@ -183,9 +185,9 @@ export default function AboutStory() {
                 </div>
 
                 {/* Block 4: Today, PSTUDIO is a team of 8... (Column 9 to 12) */}
-                <div className="row-start-1 col-start-9 col-span-4 pt-[48vh] lg:pt-[52vh] relative z-20 w-full pointer-events-auto">
+                <div className="row-start-1 col-start-9 col-span-4 pt-[48vh] lg:pt-[52vh] relative z-20 w-full pointer-events-auto text-center">
                   <p className="font-sans text-[18px] lg:text-[20px] xl:text-[22px] text-studio-dark font-normal leading-[1.65] tracking-[-0.015em]">
-                    Today, <span className="font-semibold text-black">PSTUDIO</span> is a team of 8 members working with SaaS, tech, healthcare, and industrial companies across the US, EU, and Asia. We&apos;ve shipped 200+ videos and learned something from every single one:
+                    Today, <span className="font-semibold text-[#12B97C]">PSTUDIO</span> is a team of 8 members working with SaaS, tech, healthcare, and industrial companies across the US, EU, and Asia. We&apos;ve shipped 200+ videos and learned something from every single one:
                   </p>
                 </div>
 
@@ -208,8 +210,8 @@ export default function AboutStory() {
               </div>
 
               {/* Big Bold Headline Statement: Fluid Scaled, Zero Word Drop */}
-              <div className="relative z-20 w-full max-w-[92vw] 2xl:max-w-[85vw] mx-auto text-center flex flex-col justify-center items-center px-2">
-                <h2 className="font-display font-medium text-[clamp(22px,3.1vw,56px)] leading-[1.2] tracking-[-0.03em] text-[#111111] text-center select-none">
+              <div className="relative z-20 w-full max-w-[94vw] 2xl:max-w-[90vw] mx-auto -translate-y-[8vh] text-center flex flex-col justify-center items-center px-2">
+                <h2 className="font-display font-medium text-[clamp(26px,3.6vw,68px)] leading-[1.2] tracking-[-0.03em] text-[#111111] text-center select-none">
                   <span className="block whitespace-nowrap">
                     The best video isn&apos;t the prettiest.
                   </span>
@@ -237,39 +239,41 @@ export default function AboutStory() {
       <section className="md:hidden relative w-full px-6 py-16 flex flex-col gap-12">
         
         {/* Section 1 */}
-        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-          <div className="w-10 h-1.5 bg-accent-green rounded-full mb-4" />
-          <p className="font-sans text-[17px] text-studio-dark leading-[1.65]">
-            4 years ago, <span className="font-semibold text-black">PSTUDIO</span> was a small motion graphics team in Ho Chi Minh City. We loved the craft — keyframes, easing curves, and color palettes. We could make anything look beautiful.
+        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-center">
+          <div className="w-10 h-1.5 bg-accent-green rounded-full mb-4 mx-auto" />
+          <p className="font-sans text-[17px] text-studio-dark leading-[1.65] text-pretty">
+            4&nbsp;years ago, <span className="font-semibold text-[#12B97C]">PSTUDIO</span> was a small motion graphics team in Ho&nbsp;Chi&nbsp;Minh&nbsp;City. We loved the craft&nbsp;— keyframes, easing curves, and color palettes.
+            <span className="block">We could make anything look&nbsp;beautiful.</span>
           </p>
         </div>
 
         {/* Section 2 */}
-        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-center">
           <p className="font-sans text-[17px] text-studio-dark leading-[1.65] mb-3">
             But we kept running into the same problem: we&apos;d deliver a stunning video, and the client would come back and say, <span className="italic font-medium text-black">&ldquo;It looks amazing — but it didn&apos;t move the numbers.&rdquo;</span>
           </p>
-          <p className="font-sans text-[17px] font-semibold text-black">
+          <p className="font-sans text-[17px] font-semibold text-[#12B97C]">
             That moment changed how we think about video.
           </p>
         </div>
 
         {/* Section 3: Loop Highlight Card */}
-        <div className="relative bg-[#20D38E]/15 border-2 border-accent-green/40 p-7 rounded-3xl shadow-sm">
+        <div className="relative bg-[#20D38E]/15 border-2 border-accent-green/40 p-7 rounded-3xl shadow-sm text-center">
           <img
             src="/image/star.svg"
             alt="Star"
             className="w-8 h-8 object-contain absolute -top-4 -right-2"
           />
           <p className="font-sans text-[17px] text-studio-dark font-medium leading-[1.65]">
-            We stopped asking <span className="text-black font-semibold">&ldquo;what style do you want?&rdquo;</span> and started asking <span className="text-black font-semibold">&ldquo;what business problem are we solving?&rdquo;</span> We stopped delivering files and started delivering results.
+            We stopped asking <span className="block text-[#12B97C] font-semibold">&ldquo;what style do you want?&rdquo;</span> and started asking <span className="block text-[#12B97C] font-semibold">&ldquo;what business problem are we solving?&rdquo;</span>
+            <span className="block">We stopped delivering files and started delivering results.</span>
           </p>
         </div>
 
         {/* Section 4 */}
-        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+        <div className="relative bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-center">
           <p className="font-sans text-[17px] text-studio-dark leading-[1.65]">
-            Today, <span className="font-semibold text-black">PSTUDIO</span> is a team of 8 members working with SaaS, tech, healthcare, and industrial companies across the US, EU, and Asia. We&apos;ve shipped 200+ videos and learned something from every single one:
+            Today, <span className="font-semibold text-[#12B97C]">PSTUDIO</span> is a team of 8 members working with SaaS, tech, healthcare, and industrial companies across the US, EU, and Asia. We&apos;ve shipped 200+ videos and learned something from every single one:
           </p>
         </div>
 
